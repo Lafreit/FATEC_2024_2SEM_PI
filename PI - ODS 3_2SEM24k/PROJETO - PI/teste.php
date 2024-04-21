@@ -9,10 +9,6 @@
     <?php
         require 'Crud/Classes/Conexao.php';
         use Crud\Conexao;
-       
-        $conexao = new Conexao();
-        $conexao->conectarBanco();
-
      ?>
     
 </body>

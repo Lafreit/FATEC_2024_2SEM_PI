@@ -3,9 +3,9 @@
 
     use Exception;
 
-        class Conexao
+        abstract class Conexao
         {
-            public function conectarBanco()
+            protected function conectarBanco()
             {
                 try
                 {
