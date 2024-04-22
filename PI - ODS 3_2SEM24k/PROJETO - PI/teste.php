@@ -7,8 +7,10 @@
 </head>
 <body>
     <?php
-        require 'Crud/Classes/Conexao.php';
-        use Crud\Conexao;
+        include ('CRUD/Classes/Conexao.php');
+        include ('CRUD/Classes/ClassC.php');
+
+    
      ?>
     
 </body>

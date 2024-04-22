@@ -1,7 +1,4 @@
 <?php
-    namespace Crud{
-
-    use Exception;
 
         abstract class Conexao
         {
@@ -18,7 +15,6 @@
                 }
             }
         }
-    }
     
     
 ?>
