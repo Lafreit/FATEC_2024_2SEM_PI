@@ -1,46 +1,56 @@
-1. Introdução
-O Projeto I9 Saúde é uma iniciativa que surgiu no segundo semestre do curso de Tecnólogo em Desenvolvimento de Software Multiplataforma na Fatec-Araras "Antonio Brambilla", em 2024. Ele foi concebido como um Projeto Interdisciplinar com o objetivo de criar uma solução tecnológica alinhada com o 3º Objetivo da Agenda de 2030 da ONU para o desenvolvimento sustentável: 'Saúde e Bem estar'. A plataforma I9 Saúde visa promover a saúde e o bem-estar, abordando desafios na área da saúde por meio da tecnologia.
+# PI_DSM_Fatec-Araras
 
-1.1 Nossa Visão
-Nossa visão é estabelecer uma comunidade de cuidados de saúde mais conectada e colaborativa, onde médicos e pacientes trabalhem juntos em busca de melhores resultados de saúde e qualidade de vida. Queremos promover transparência, comunicação e acessibilidade no cuidado de saúde, capacitando tanto pacientes quanto médicos a alcançar melhores resultados clínicos e uma experiência de cuidado mais satisfatória.
+O Projeto I9 Saúde teve sua origem em 2024 como um Projeto Interdisciplinar durante o segundo semestre do curso de Tecnólogo em Desenvolvimento de Software Multiplataforma na
+Fatec-Araras "Antonio Brambilla". Enfrentamos o desafio de criar uma solução tecnológica compatível ao
+3º Objetivo da Agenda de 2030 da ONU para o desenvolvimento sustentável: 'Saúde e Bem estar'
+(Saiba mais em https://brasil.un.org/pt-br/sdgs/3 ).
 
-2. Descrição do Projeto
+Assim nasceu o I9 Saúde, uma iniciativa voltada para a promoção da Saúde e do bem estar, que busca superar problemas na área da saúde e bem estar das pessoas junto com tecnologia.
+
+# I9 Saude
+
+
+
+## 1. Indroduçao
+
+A I9 Saude oferece uma abordagem abrangente e integrada para o monitoramento e acompanhamento do tratamento medicamentoso. Com uma interface intuitiva e acessível, os pacientes podem receber lembretes personalizados sobre a administração de medicamentos, registrar e monitorar os efeitos colaterais, e comunicar-se diretamente com seus médicos.
+
+## 1.1 Nossa Visão
+
+Nossa plataforma é uma solução digital que visa melhorar a gestão de tratamentos medicamentosos, facilitando a comunicação entre pacientes e médicos. Com lembretes personalizados, registro de efeitos colaterais e comunicação direta, busca-se aumentar a adesão ao tratamento e proporcionar um cuidado mais eficaz e personalizado. O acesso seguro e a integração com sistemas de saúde existentes garantem a confidencialidade e a eficiência do processo.
+
+## 2. Descrição do Projeto
 A Plataforma I9 Saúde é uma solução digital que visa melhorar a gestão de tratamentos medicamentosos, facilitando a comunicação entre pacientes e médicos. Com lembretes personalizados, registro de efeitos colaterais e comunicação direta, busca-se aumentar a adesão ao tratamento e proporcionar um cuidado mais eficaz e personalizado. O acesso seguro e a integração com sistemas de saúde existentes garantem a confidencialidade e a eficiência do processo.
 
-2.1 Objetivos:
-Facilitar a gestão dos tratamentos medicamentosos por parte dos pacientes.
-Capacitar os médicos a acompanhar de perto o progresso de seus pacientes.
-Promover uma comunicação mais transparente e eficaz entre pacientes e médicos.
+### Recursos Principais:
 
-2.2 Funcionalidades da Plataforma
-Acesso do Paciente:
-Recebimento de lembretes personalizados sobre a administração de medicamentos via SMS.
-Registro e monitoramento dos efeitos colaterais da medicação.
-Comunicação direta com o médico para relatar sintomas e preocupações.
-Acesso do Médico:
-Visualização do histórico de uso da medicação e dos efeitos colaterais relatados pelos pacientes.
-Capacidade de ajustar as prescrições de acordo com as necessidades individuais de cada paciente.
-Comunicação direta com os pacientes para fornecer orientações e suporte.
+•	Acesso do Paciente:
+o	Recebimento de lembretes personalizados sobre a administração de medicamentos via SMS.
+o	Registro e monitoramento dos efeitos colaterais da medicação.
+o	Comunicação direta com o médico para relatar sintomas e preocupações.
 
-3. Requisitos de Acesso e Segurança
-Os pacientes precisam passar por uma consulta inicial com um profissional de saúde para receber um código de acesso à plataforma.
-Todas as informações transmitidas pela plataforma são protegidas por medidas de segurança robustas para garantir a confidencialidade e a integridade dos dados.
+•	Acesso do Médico:
+o	Visualização do histórico de uso da medicação e dos efeitos colaterais relatados pelos pacientes.
+o	Capacidade de ajustar as prescrições de acordo com as necessidades individuais de cada paciente.
+o	Comunicação direta com os pacientes para fornecer orientações e suporte.
 
-4. Benefícios Esperados
-Melhoria da adesão ao tratamento medicamentoso.
-Acompanhamento mais eficaz do progresso do tratamento.
-Redução de eventos adversos relacionados à medicação.
-Maior satisfação e engajamento tanto por parte dos pacientes quanto dos médicos.
+Requisitos de Acesso e Segurança:
+•	Os pacientes precisam passar por uma consulta inicial com um profissional de saúde para receber um código de acesso à plataforma.
+•	Todas as informações transmitidas pela plataforma são protegidas por medidas de segurança robustas para garantir a confidencialidade e a integridade dos dados
 
-5. Implementação e Desenvolvimento
-A plataforma será desenvolvida por uma equipe multidisciplinar composta por profissionais de saúde, engenheiros de software e designers de interface.
-Serão realizados testes piloto com pacientes e médicos para avaliar a usabilidade e a eficácia da plataforma antes do lançamento oficial.
+Benefícios Esperados:
+•	Melhoria da adesão ao tratamento medicamentoso.
+•	Acompanhamento mais eficaz do progresso do tratamento.
+•	Redução de eventos adversos relacionados à medicação.
+•	Maior satisfação e engajamento tanto por parte dos pacientes quanto dos médicos.
 
-6. Parcerias e Colaborações
-Buscaremos parcerias com instituições de saúde e clínicas médicas para integrar a plataforma aos sistemas de registro de saúde eletrônico existentes e garantir uma transição suave para os usuários.
+## Contato
 
-7. Futuras Expansões e Aprimoramentos
-Após o lançamento inicial, planejamos continuar aprimorando e expandindo a plataforma com base no feedback dos usuários e nas novas tecnologias disponíveis.
-Contato
 Para mais informações ou dúvidas, entre em contato conosco:
-Nomes dos Integrantes e seus Github
+- KALLIEL MARCOS PINHEIRO-https://github.com/Kallielmpinheiro
+- LUIZ ANTONIO DE FREITAS-
+- LUIZ HENRIQUE SIMIONATO VICENTE-https://github.com/luizsimi
+- MARCELO FERREIRA MIRANDA-https://github.com/MirandaSoulcelo
+- VICTOR MANOEL MARTINS-
+
+Agradecemos por seu interesse no Projeto I9 soluçoes!
