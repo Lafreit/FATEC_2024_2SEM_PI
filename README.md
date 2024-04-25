@@ -1,26 +1,26 @@
 # PI_DSM_Fatec-Araras
 
-O Projeto I9 Saúde teve sua origem em 2024 como um Projeto Interdisciplinar durante o segundo semestre do curso de Tecnólogo em Desenvolvimento de Software Multiplataforma na
+O Projeto I9 Solution teve sua origem em 2024 como um Projeto Interdisciplinar durante o segundo semestre do curso de Tecnólogo em Desenvolvimento de Software Multiplataforma na
 Fatec-Araras "Antonio Brambilla". Enfrentamos o desafio de criar uma solução tecnológica compatível ao
 3º Objetivo da Agenda de 2030 da ONU para o desenvolvimento sustentável: 'Saúde e Bem estar'
 (Saiba mais em https://brasil.un.org/pt-br/sdgs/3 ).
 
-Assim nasceu o I9 Saúde, uma iniciativa voltada para a promoção da Saúde e do bem estar, que busca superar problemas na área da saúde e bem estar das pessoas junto com tecnologia.
+Assim nasceu o I9 Solution, uma iniciativa voltada para a promoção da Saúde e do bem estar, que busca superar problemas na área da saúde e bem estar das pessoas junto com tecnologia.
 
-# I9 Saude
+# I9 Solution
 
 
 
 ## 1. Indroduçao
 
-A I9 Saude oferece uma abordagem abrangente e integrada para o monitoramento e acompanhamento do tratamento medicamentoso. Com uma interface intuitiva e acessível, os pacientes podem receber lembretes personalizados sobre a administração de medicamentos, registrar e monitorar os efeitos colaterais, e comunicar-se diretamente com seus médicos.
+A I9 Solution oferece uma abordagem abrangente e integrada para o monitoramento e acompanhamento do tratamento medicamentoso. Com uma interface intuitiva e acessível, os pacientes podem receber lembretes personalizados sobre a administração de medicamentos, registrar e monitorar os efeitos colaterais, e comunicar-se diretamente com seus médicos.
 
 ## 1.1 Nossa Visão
 
 Nossa plataforma é uma solução digital que visa melhorar a gestão de tratamentos medicamentosos, facilitando a comunicação entre pacientes e médicos. Com lembretes personalizados, registro de efeitos colaterais e comunicação direta, busca-se aumentar a adesão ao tratamento e proporcionar um cuidado mais eficaz e personalizado. O acesso seguro e a integração com sistemas de saúde existentes garantem a confidencialidade e a eficiência do processo.
 
 ## 2. Descrição do Projeto
-A Plataforma I9 Saúde é uma solução digital que visa melhorar a gestão de tratamentos medicamentosos, facilitando a comunicação entre pacientes e médicos. Com lembretes personalizados, registro de efeitos colaterais e comunicação direta, busca-se aumentar a adesão ao tratamento e proporcionar um cuidado mais eficaz e personalizado. O acesso seguro e a integração com sistemas de saúde existentes garantem a confidencialidade e a eficiência do processo.
+A Plataforma I9 Solution é uma solução digital que visa melhorar a gestão de tratamentos medicamentosos, facilitando a comunicação entre pacientes e médicos. Com lembretes personalizados, registro de efeitos colaterais e comunicação direta, busca-se aumentar a adesão ao tratamento e proporcionar um cuidado mais eficaz e personalizado. O acesso seguro e a integração com sistemas de saúde existentes garantem a confidencialidade e a eficiência do processo.
 
 ### Recursos Principais:
 
@@ -53,4 +53,4 @@ Para mais informações ou dúvidas, entre em contato conosco:
 - MARCELO FERREIRA MIRANDA-https://github.com/MirandaSoulcelo
 - VICTOR MANOEL MARTINS-https://github.com/heyvitin
 
-Agradecemos por seu interesse no Projeto I9 soluçoes!
+Agradecemos por seu interesse no Projeto I9 solution!
