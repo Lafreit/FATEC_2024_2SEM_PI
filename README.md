@@ -51,6 +51,6 @@ Para mais informações ou dúvidas, entre em contato conosco:
 - LUIZ ANTONIO DE FREITAS-
 - LUIZ HENRIQUE SIMIONATO VICENTE-https://github.com/luizsimi
 - MARCELO FERREIRA MIRANDA-https://github.com/MirandaSoulcelo
-- VICTOR MANOEL MARTINS-
+- VICTOR MANOEL MARTINS-https://github.com/heyvitin
 
 Agradecemos por seu interesse no Projeto I9 soluçoes!
