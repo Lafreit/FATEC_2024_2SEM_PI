@@ -6,39 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Cadastro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-        }
-
-        .form-label {
-            font-weight: bold;
-        }
-
-        .btn-container {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .btn {
-            width: 30%;
-        }
-
-        #senha_gerada {
-            width: 100%;
-        }
-
-        /* Adicionando margem superior aos selects */
-        select {
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/formpaciente.css">
 </head>
 
 <body>
@@ -63,7 +31,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="cep" class="form-label">CEP</label>
                     <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP"
-                        oninput="consultarCEP()">
+                        oninput="handleCEPInput()">
                 </div>
             </div>
             <div class="row">
@@ -122,25 +90,36 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Função para evitar consultas excessivas ao CEP
+        var typingTimer;
+        var doneTypingInterval = 1000; // 1 segundo
+
+        function handleCEPInput() {
+            clearTimeout(typingTimer);
+            typingTimer = setTimeout(consultarCEP, doneTypingInterval);
+        }
+
         function consultarCEP() {
-            var cep = document.getElementById("cep").value;
-            fetch("https://viacep.com.br/ws/" + cep + "/json/")
-                .then(response => response.json())
-                .then(data => {
-                    if (!data.erro) {
-                        document.getElementById("cidade").value = data.localidade;
-                        document.getElementById("estado").value = data.uf;
-                        document.getElementById("rua").value = data.logradouro;
-                    } else {
-                        document.getElementById("cidade").value = "";
-                        document.getElementById("estado").value = "";
-                        document.getElementById("rua").value = "";
-                    }
-                })
-                .catch(error => {
-                    console.error("Erro ao consultar o CEP:", error);
-                    alert("Erro ao consultar o CEP. Por favor, tente novamente mais tarde.");
-                });
+            var cep = document.getElementById("cep").value.trim(); // Remove espaços em branco do início e do fim
+            if (cep) { // Verifica se o campo do CEP não está vazio
+                fetch("https://viacep.com.br/ws/" + cep + "/json/")
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.erro) {
+                            document.getElementById("cidade").value = data.localidade;
+                            document.getElementById("estado").value = data.uf;
+                            document.getElementById("rua").value = data.logradouro;
+                        } else {
+                            document.getElementById("cidade").value = "";
+                            document.getElementById("estado").value = "";
+                            document.getElementById("rua").value = "";
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Erro ao consultar o CEP:", error);
+                        alert("Erro ao consultar o CEP. Por favor, tente novamente mais tarde.");
+                    });
+            }
         }
 
         function gerarSenha() {
