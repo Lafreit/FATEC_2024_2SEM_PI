@@ -1,3 +1,113 @@
+<?php
+require_once '../CRUD/Classes/Conexao.php';
+
+
+// Caminho onde as imagens serão armazenadas
+$uploadDir = "C:/xampp/htdocs/testeimg/";
+
+function gerarSenha($tamanho = 8)
+{
+    $caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    $senha = '';
+    for ($i = 0; $i < $tamanho; $i++) {
+        $senha .= $caracteres[rand(0, strlen($caracteres) - 1)];
+    }
+    return $senha;
+}
+
+function consultarCEP($cep)
+{
+    $cep = preg_replace('/[^0-9]/', '', $cep);
+    if (strlen($cep) != 8) {
+        return false;
+    }
+    $url = "https://viacep.com.br/ws/{$cep}/json/";
+
+    // Inicializa a sessão cURL
+    $curl = curl_init();
+
+    // Define a URL da requisição cURL
+    curl_setopt($curl, CURLOPT_URL, $url);
+
+    // Define que a resposta da requisição deve ser armazenada em uma variável
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    // Executa a requisição cURL e armazena a resposta
+    $response = curl_exec($curl);
+
+    // Verifica se houve erro na requisição
+    if ($response === false) {
+        return false;
+    }
+
+    // Fecha a sessão cURL
+    curl_close($curl);
+
+    // Decodifica a resposta JSON para um array associativo
+    $data = json_decode($response, true);
+
+    return $data;
+}
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
+
+    $nome = $_POST["nome"];
+    $sobrenome = $_POST["sobrenome"];
+    $cpf = $_POST["cpf"];
+    $cep = $_POST["cep"];
+    $plano = $_POST["plano"];
+    $tipo_usuario = $_POST["tipo_usuario"];
+    $estado = $_POST["estado"];
+    $cidade = $_POST["cidade"];
+    $rua = $_POST["rua"];
+    $numero = $_POST["numero"];
+    $imagem = $uploadDir . basename($_FILES["imagem"]["name"]);
+    $senha_gerada = gerarSenha(8);
+
+    $sql_verificar = "SELECT id FROM pacientes WHERE cpf = '$cpf'";
+    $result_verificar = $mysqli->query($sql_verificar);
+    if ($result_verificar && $result_verificar->num_rows > 0) {
+        echo "Este paciente já está cadastrado.";
+    } else {
+        // Verifica se é uma imagem e se o tamanho está dentro do limite
+        $permitidos = array('png', 'jpg', 'jpeg');
+        $extensao = strtolower(pathinfo($imagem, PATHINFO_EXTENSION));
+        if (in_array($extensao, $permitidos)) {
+            if ($_FILES["imagem"]["size"] > 500000) {
+                echo "Tamanho da imagem é muito grande. Por favor, escolha uma imagem menor.";
+            } else {
+                // Movendo a imagem para o diretório de upload
+                $uploadFile = $uploadDir . basename($_FILES["imagem"]["name"]);
+                if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $uploadFile)) {
+                    // Consultar CEP e preencher os campos de estado, cidade e rua
+                    $cep_data = consultarCEP($cep);
+                    if ($cep_data) {
+                        $estado = $cep_data['uf'];
+                        $cidade = $cep_data['localidade'];
+                        $rua = $cep_data['logradouro'];
+                    } else {
+                        echo "Erro ao consultar o CEP.";
+                    }
+
+                    // Inserir dados do paciente no banco de dados
+                    $sql = "INSERT INTO pacientes (nome, sobrenome, cpf, cep, estado, cidade, rua, numero, plano, tipo_usuario, imagem, senha_gerada) VALUES ('$nome', '$sobrenome', '$cpf', '$cep', '$estado', '$cidade', '$rua', '$numero', '$plano', '$tipo_usuario', '$imagem', '$senha_gerada')";
+                    if ($mysqli->query($sql) === TRUE) {
+                        // Alerta mostrando o CPF e a senha gerada
+                        echo "<script>alert('Paciente cadastrado com sucesso!\\nCPF: $cpf\\nSenha: $senha_gerada');</script>";
+                    } else {
+                        echo "Erro ao adicionar o paciente: " . $mysqli->error;
+                    }
+                } else {
+                    echo "Erro ao mover o arquivo de imagem.";
+                }
+            }
+        } else {
+            echo "Formato de arquivo não suportado. Por favor, envie uma imagem no formato PNG, JPG ou JPEG.";
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +121,7 @@
 
 <body>
     <div class="container">
-        <form method="post" class="p-4 border rounded shadow">
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="p-4 border rounded shadow" enctype="multipart/form-data">
             <h2 class="mb-4">Formulário de Cadastro</h2>
             <div class="row">
                 <div class="col-md-6 mb-3">
@@ -30,22 +140,21 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="cep" class="form-label">CEP</label>
-                    <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP"
-                        oninput="handleCEPInput()">
+                    <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <label for="estado" class="form-label">Estado</label>
-                    <input type="text" class="form-control" name="estado" id="estado" placeholder="Estado" readonly>
+                    <input type="text" class="form-control" name="estado" id="estado" placeholder="Estado">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="cidade" class="form-label">Cidade</label>
-                    <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" readonly>
+                    <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="rua" class="form-label">Rua</label>
-                    <input type="text" class="form-control" name="rua" id="rua" placeholder="Rua" readonly>
+                    <input type="text" class="form-control" name="rua" id="rua" placeholder="Rua">
                 </div>
             </div>
             <div class="row">
@@ -75,65 +184,36 @@
                     </select>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="senha_gerada" class="form-label">Senha Gerada</label>
-                    <input type="text" class="form-control" name="senha_gerada" id="senha_gerada"
-                        placeholder="Senha Gerada" readonly>
+                    <label for="imagem" class="form-label">Foto do Paciente</label>
+                    <input type="file" class="form-control" name="imagem" id="imagem">
                 </div>
             </div>
             <div class="btn-container">
-                <button type="button" class="btn btn-primary" onclick="gerarSenha()">Gerar Senha</button>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
                 <button type="button" class="btn btn-secondary" onclick="window.history.back()">Voltar</button>
             </div>
         </form>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Função para evitar consultas excessivas ao CEP
-        var typingTimer;
-        var doneTypingInterval = 1000; // 1 segundo
-
-        function handleCEPInput() {
-            clearTimeout(typingTimer);
-            typingTimer = setTimeout(consultarCEP, doneTypingInterval);
-        }
-
-        function consultarCEP() {
-            var cep = document.getElementById("cep").value.trim(); // Remove espaços em branco do início e do fim
-            if (cep) { // Verifica se o campo do CEP não está vazio
-                fetch("https://viacep.com.br/ws/" + cep + "/json/")
-                    .then(response => response.json())
-                    .then(data => {
-                        if (!data.erro) {
-                            document.getElementById("cidade").value = data.localidade;
-                            document.getElementById("estado").value = data.uf;
-                            document.getElementById("rua").value = data.logradouro;
-                        } else {
-                            document.getElementById("cidade").value = "";
-                            document.getElementById("estado").value = "";
-                            document.getElementById("rua").value = "";
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Erro ao consultar o CEP:", error);
-                        alert("Erro ao consultar o CEP. Por favor, tente novamente mais tarde.");
-                    });
-            }
-        }
-
-        function gerarSenha() {
-            var caracteres = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz123456789';
-
-            var comprimento = 10;
-
-            var senha = '';
-            for (var i = 0; i < comprimento; i++) {
-                senha += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-            }
-            document.getElementById("senha_gerada").value = senha;
-        }
-    </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            // Função para preencher os campos de endereço ao preencher o CEP
+            document.getElementById('cep').addEventListener('blur', function() {
+                var cep = this.value.replace(/\D/g, '');
+                if (cep.length != 8) {
+                    return;
+                }
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'https://viacep.com.br/ws/' + cep + '/json/');
+                xhr.onload = function() {
+                    var data = JSON.parse(xhr.responseText);
+                    if (!data.erro) {
+                        document.getElementById('estado').value = data.uf;
+                        document.getElementById('cidade').value = data.localidade;
+                        document.getElementById('rua').value = data.logradouro;
+                    }
+                };
+                xhr.send();
+            });
+        </script>
 </body>
 
 </html>
