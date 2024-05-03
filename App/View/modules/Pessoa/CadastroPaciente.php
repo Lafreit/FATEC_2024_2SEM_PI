@@ -1,19 +1,11 @@
 <?php
-require_once '../CRUD/Classes/Conexao.php';
 
-
-// Caminho onde as imagens serão armazenadas
+//Caminho onde as imagens serão armazenadas
 $uploadDir = "C:/xampp/htdocs/testeimg/";
 
-function gerarSenha($tamanho = 8)
-{
-    $caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    $senha = '';
-    for ($i = 0; $i < $tamanho; $i++) {
-        $senha .= $caracteres[rand(0, strlen($caracteres) - 1)];
-    }
-    return $senha;
-}
+
+
+
 
 function consultarCEP($cep)
 {
@@ -49,7 +41,7 @@ function consultarCEP($cep)
     return $data;
 }
 
-
+/*
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
 
     $nome = $_POST["nome"];
@@ -107,6 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
         }
     }
 }
+*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
 
 <body>
     <div class="container">
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="p-4 border rounded shadow" enctype="multipart/form-data">
+        <form action="/pessoa/form/save" method="post"  class="p-4 border rounded shadow" enctype="multipart/form-data">
             <h2 class="mb-4">Formulário de Cadastro</h2>
             <div class="row">
                 <div class="col-md-6 mb-3">
@@ -154,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="rua" class="form-label">Rua</label>
-                    <input type="text" class="form-control" name="rua" id="rua" placeholder="Rua">
+                    <input type="text" class="form-control" name="Rua" id="rua" placeholder="Rua">
                 </div>
             </div>
             <div class="row">
@@ -183,10 +176,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
                         <option value="pessoa">Pessoa</option>
                     </select>
                 </div>
+                <?php 
+                /*
                 <div class="col-md-6 mb-3">
                     <label for="imagem" class="form-label">Foto do Paciente</label>
                     <input type="file" class="form-control" name="imagem" id="imagem">
                 </div>
+                */
+                ?>
+                
             </div>
             <div class="btn-container">
                 <button type="submit" class="btn btn-primary">Cadastrar</button>

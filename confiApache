@@ -1,0 +1,5 @@
+<Directory "D:\xampp\htdocs\App">
+    Options FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
