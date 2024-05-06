@@ -10,7 +10,7 @@
         <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Nome do Medicamento</th>
+            <th>Medicamento</th>
             <th>quantidade</th>
             <th>vezes ao dia</th>
         </tr>

@@ -49,7 +49,7 @@ function consultarCEP($cep)
     return $data;
 }
 
-/*
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
 
     $nome = $_POST["nome"];
@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
         }
     }
 }
-*/
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

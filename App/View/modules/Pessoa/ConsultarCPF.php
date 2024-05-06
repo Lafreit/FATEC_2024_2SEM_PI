@@ -48,17 +48,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['idpaciente'])) {
 <body>
     <div class="container">
         <h2 class="mt-4 mb-4 text-center">Buscar Paciente por CPF</h2>
-        <form action="medicamento/Consultar" method="post">
+        <form action= "/medicamento/Consultar" method="post">
             <div class="mb-3">
                 <label for="cpf" class="form-label">Digite o CPF do paciente:</label>
-                <input type="text" name="cpf" id="cpf" class="form-control">
+                <input type="text" name="cpf" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Buscar</button>
         </form>
-
-        <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST['cpf'])) : ?>
-            <p class="mt-4 mb-4 text-center">Nenhum paciente encontrado com o CPF informado.</p>
-        <?php endif; ?>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

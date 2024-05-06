@@ -9,7 +9,7 @@ public static function index()
 
     $model = new MedicamentoModel();
     $model->getAllRows();
-    include 'App/View/modules/Pessoa/ListaMedicamento.php';
+    include 'App/View/modules/Medicação/ListaMedicamento.php';
 }
 
 
@@ -17,7 +17,7 @@ public static function index()
 
 public static function form()
 {
-    include 'App/View/modules/Pessoa/CadastrarMedicacao.php';
+    include 'App/View/modules/Medicação/CadastrarMedicacao.php';
 }
 
 
@@ -51,16 +51,21 @@ public static function Consulta()
 {
     include 'App/Model/MedicamentoModel.php';
     $model = new MedicamentoModel();
-    $model->parametro = $_POST['id'];
+    if(isset($_POST['cpf'])) {
+        // Atribui o valor do campo 'cpf' à propriedade 'parametro' do modelo
+        $model->parametro = $_POST['cpf'];
 
-    $model->consulta();
+        // Realiza a consulta utilizando o método 'consulta' do modelo
+        $model->consulta();
 
+    } else {
+        // Se o campo 'cpf' não foi enviado através do método POST, exibe uma mensagem de erro
+        echo "O campo 'cpf' não foi enviado através do formulário.";
+    }
+
+    // Inclui a view ConsultarP.php
     include 'App/View/modules/Pessoa/ConsultarP.php';
-
-
 }
 
-
 }
-
 ?>

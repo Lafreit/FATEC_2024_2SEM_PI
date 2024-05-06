@@ -1,11 +1,12 @@
 <?php 
-
+include_once('PessoaModel.php');
 class MedicamentoModel
 {
     public $result;
     public $parametro;
     public $rows;
     public $paciente_id, $nome, $quantidade, $vezes_ao_dia;
+    public PessoaModel $nomePessoa;
     public function save()
     {
         include 'App/DAO/MedicamentoDAO.php';

@@ -43,7 +43,6 @@ class MedicamentoDAO extends PessoaDAO
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
-        echo "Procedure chamada com sucesso";
 
         } catch(PDOException $e)
         {
