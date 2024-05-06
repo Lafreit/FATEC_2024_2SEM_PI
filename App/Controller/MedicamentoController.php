@@ -42,7 +42,7 @@ public static function save()
 
 public static function formConsulta()
 {
-    include 'App/View/modules/Pessoa/ConsultarPaciente.php';
+    include 'App/View/modules/Pessoa/ConsultarCPF.php';
 }
 
 

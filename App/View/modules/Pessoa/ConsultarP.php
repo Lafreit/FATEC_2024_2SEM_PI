@@ -11,6 +11,8 @@
             <th>ID</th>
             <th>Nome</th>
             <th>Nome do Medicamento</th>
+            <th>quantidade</th>
+            <th>vezes ao dia</th>
         </tr>
         <?php
         // Verifica se há resultados para exibir
