@@ -2,7 +2,7 @@
 
     class PessoaModel
     {
-       public $id, $nome, $sobrenome, $cpf, $cep, $estado, $cidade, $rua, $numero, $plano_saude, $tipo_usuario, $senha;
+       public $id, $nome, $sobrenome, $cpf, $cep, $estado, $cidade, $rua, $numero, $plano_saude, $tipo_Usuario, $senha;
 
        public $rows;
        
@@ -25,31 +25,10 @@
 
        public function save()
        {
-
-        
         include 'App/DAO/PessoaDAO.php';
         $dao = new PessoaDAO();
-
-
-        if(empty($this->id))
-        {
-            $dao->insert($this);
-
-        } else
-        {
-            $dao->update($this);
-       
-      
+        $dao->insert($this);
        }
-        }
-
-        public function delete(int $id)
-        {
-            include 'App/DAO/PessoaDAO.php';
-
-            $dao = new PessoaDAO();
-            $dao->delete($id);
-        }
 
        public function getAllRows()
        {
@@ -59,18 +38,5 @@
         $this->rows = $dao->select();
 
        }
-
-       public function getById(int $id)
-       {
-        include 'App/DAO/PessoaDAO.php';
-        $dao = new PessoaDAO(); 
-        $obj =  $dao->selectById($id);
-
-        return ($obj) ? $obj : new PessoaModel;
-
-        }
-    
     }
-      
-    
 ?>
