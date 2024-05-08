@@ -12,7 +12,7 @@
 <section class="doctor-section">
     <h1 class="heading">Área do Médico</h1>
     <div class="row">
-        <a href="pagina1.html" class="box1">
+        <a href="/medicamento/formConsulta" class="box1">
             <i class="fas fa-history"></i>
             <h2>Visualização do Histórico</h2>
             <p>Visualize o histórico de uso da medicação e dos efeitos colaterais relatados pelos pacientes.</p>
@@ -22,10 +22,10 @@
             <h2>Ajuste de Prescrições</h2>
             <p>Ajuste as prescrições de acordo com as necessidades individuais de cada paciente.</p>
         </a>
-        <a href="pagina3.html" class="box1">
+        <a href="/pessoa/form" class="box1">
             <i class="fas fa-comments"></i>
-            <h2>Comunicação Direta</h2>
-            <p>Comunique-se diretamente com os pacientes para fornecer orientações e suporte.</p>
+            <h2>Cadastrar Paciente</h2>
+            <p>Cadastre, atualize e exclua.</p>
         </a>
     </div>
 </section>
