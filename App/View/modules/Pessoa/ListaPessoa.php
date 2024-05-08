@@ -4,68 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Pessoas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-    </style>
 </head>
 <body>
     <table>
         <tr>
-            <th></th>
             <th>Id</th>
             <th>Nome</th>
             <th>Sobrenome</th>
-            <th>CPF</th>
-            <th>CEP</th>
+            <th>cpf</th>
+            <th>Cep</th>
+            <th></th>
             <th>Estado</th>
+            <th></th>
             <th>Cidade</th>
+            <th></th>
             <th>Rua</th>
-            <th>Número</th>
-            <th>Tipo de Usuário</th>
-            <th>Plano de Saúde</th>
+            <th></th>
+            <th>numero</th>
+            <th></th>
+            <th>Tipo de Usuario</th>
+            <th>Plano de Saude</th>
+
         </tr>
         <?php foreach($model->rows as $item): ?>
             <tr>
-                <td>
-                    <a href="/pessoa/delete?id=<?= $item->id ?>">X</a>
-                </td>
+
                 <td><?= $item->id ?></td>
                 <td><?= $item->nome ?></td>
                 <td><?= $item->sobrenome ?></td>
                 <td><?= $item->cpf ?></td>
                 <td><?= $item->cep ?></td>
+                <td></td>
                 <td><?= $item->estado ?></td>
+                <td></td>
                 <td><?= $item->cidade ?></td>
+                <td></td>
                 <td><?= $item->rua ?></td>
+                <td></td>
                 <td><?= $item->numero ?></td>
+                <td></td>
                 <td><?= $item->tipo_usuario ?></td>
                 <td><?= $item->plano_saude ?></td>
+          
+            
+            
             </tr>
         <?php endforeach?>
     </table>
