@@ -37,6 +37,7 @@
 <body>
     <table>
         <tr>
+            <th></th>
             <th>Id</th>
             <th>Nome</th>
             <th>Sobrenome</th>
@@ -51,6 +52,9 @@
         </tr>
         <?php foreach($model->rows as $item): ?>
             <tr>
+                <td>
+                    <a href="/pessoa/delete?id=<?= $item->id ?>">X</a>
+                </td>
                 <td><?= $item->id ?></td>
                 <td><?= $item->nome ?></td>
                 <td><?= $item->sobrenome ?></td>
@@ -58,9 +62,9 @@
                 <td><?= $item->cep ?></td>
                 <td><?= $item->estado ?></td>
                 <td><?= $item->cidade ?></td>
-                <td><?= $item->Rua ?></td>
+                <td><?= $item->rua ?></td>
                 <td><?= $item->numero ?></td>
-                <td><?= $item->tipo_Usuario ?></td>
+                <td><?= $item->tipo_usuario ?></td>
                 <td><?= $item->plano_saude ?></td>
             </tr>
         <?php endforeach?>
