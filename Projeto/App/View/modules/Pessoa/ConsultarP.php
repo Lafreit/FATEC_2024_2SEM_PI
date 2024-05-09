@@ -95,7 +95,7 @@
                     $ultimo_nome = $linha->nome; // Atualiza o último nome exibido
                 } else {
                     // Se for o mesmo nome do paciente, exibe células vazias para o ID e o nome
-                    echo '<td></td><td></td><td></td>';
+                    echo '<td></td><td></td>';
                 }
                 // Exibe as informações do medicamento
                 echo '<td>' . $linha->Medicamento . '</td>';
