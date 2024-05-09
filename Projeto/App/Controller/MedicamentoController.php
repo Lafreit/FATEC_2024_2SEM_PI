@@ -30,6 +30,7 @@ public static function save()
     $model->paciente_id = $_POST['paciente_id'];
     $model->nome = $_POST['nome'];
     $model->quantidade = $_POST['quantidade'];
+    $model->duracao_dias = $_POST['duracao_dias'];
     $model->vezes_ao_dia = $_POST['vezes_ao_dia'];
 
 

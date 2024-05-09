@@ -23,6 +23,10 @@ include 'App/Controller/MedicamentoController.php';
             PessoaController::save();
         break;
 
+        case '/pessoa/delete':
+            PessoaController:: delete();
+        break;
+
 
 
         case '/medicamento':
