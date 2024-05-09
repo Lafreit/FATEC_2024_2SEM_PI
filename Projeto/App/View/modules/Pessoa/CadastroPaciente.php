@@ -118,8 +118,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
             <h2 class="mb-4">Formulário de Cadastro</h2>
             <div class="row">
                 <div class="col-md-6 mb-3">
+                 <input type="hidden" value = "<?= $model->id ?>" name = "id" />  
+
                     <label for="nome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
+                    <input type="text" class="form-control" name="nome" id="nome"  value="<?= $model->nome ?>" >
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="sobrenome" class="form-label">Sobrenome</label>
@@ -129,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="cpf" class="form-label">CPF</label>
-                    <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF">
+                    <input type="text" class="form-control" name="cpf" id="cpf" value="<?= $model->cpf ?>" placeholder="CPF">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="cep" class="form-label">CEP</label>
@@ -147,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="rua" class="form-label">Rua</label>
-                    <input type="text" class="form-control" name="Rua" id="rua" placeholder="Rua">
+                    <input type="text" class="form-control" name="rua" id="rua" placeholder="rua">
                 </div>
             </div>
             <div class="row">

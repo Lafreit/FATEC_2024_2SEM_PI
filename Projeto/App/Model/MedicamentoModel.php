@@ -5,7 +5,7 @@ class MedicamentoModel
     public $result;
     public $parametro;
     public $rows;
-    public $paciente_id, $nome, $quantidade, $vezes_ao_dia;
+    public $paciente_id, $nome, $quantidade, $vezes_ao_dia, $duracao_dias;
     public PessoaModel $nomePessoa;
     public function save()
     {
