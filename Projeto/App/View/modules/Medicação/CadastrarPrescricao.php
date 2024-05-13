@@ -65,16 +65,16 @@
 </head>
 <body>
     <div class="container">
-        <h2>Cadastrar Medicamento</h2>
-        <form action="/medicamento/form/save" method="post">
+        <h2>Cadastrar Prescricao</h2>
+        <form action="" method="post">
             <div class="form-group">
-                <label for="nomeMedicamento">Medicamento</label>
-                <input type="text" id="nomeMedicamento" name="nomeMedicamento" required>
+                <label for="nomeMedicamento">id_paciente</label>
+                <input type="number" id="nomeMedicamento" name="id_paciente" required>
             </div>
 
             <div class="form-group">
-                <label for="fabricante">fabricante</label>
-                <input type="text" id="fabricante" name="fabricante" required>
+                <label for="id_medicamentosconsulta">id_medicamento</label>
+                <input type="number" id="id_medicamento" name="fabricante" required>
             </div>
 
             <div class="form-group">

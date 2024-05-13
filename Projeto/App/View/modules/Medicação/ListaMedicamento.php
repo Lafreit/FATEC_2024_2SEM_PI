@@ -44,19 +44,17 @@
 <body>
     <table>
         <tr>
-            <th>Paciente ID</th>
-            <th>Nome</th>
-            <th>Quantidade</th>
-            <th>Vezes ao Dia</th>
-            <th>Duração de dias</th>
+            <th>Nome Medicamento</th>
+            <th>Fabricante</th>
+            <th>Tipo</th>
+            <th>Uso</th>
         </tr>
         <?php foreach($model->rows as $item): ?>
             <tr>
-                <td><?= $item->paciente_id ?></td>
-                <td><?= $item->nome ?></td>
-                <td><?= $item->quantidade ?></td>
-                <td><?= $item->vezes_ao_dia ?></td>
-                <td><?= $item->duracao_dias ?></td>
+                <td><?= $item->nomeMedicamento ?></td>
+                <td><?= $item->fabricante ?></td>
+                <td><?= $item->tipo ?></td>
+                <td><?= $item->uso ?></td>
             </tr>
         <?php endforeach?>
     </table>
