@@ -2,11 +2,6 @@
 
 //Caminho onde as imagens serão armazenadas
 $uploadDir = "C:/xampp/htdocs/testeimg/";
-
-
-
-
-
 function consultarCEP($cep)
 {
     $cep = preg_replace('/[^0-9]/', '', $cep);
@@ -131,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="cpf" class="form-label">CPF</label>
-                    <input type="text" class="form-control" name="cpf" id="cpf" value="<?= $model->cpf ?>" placeholder="CPF">
+                    <input type="text" class="form-control" name="cpf" value="<?= $model->cpf ?>" placeholder="CPF">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="cep" class="form-label">CEP</label>
