@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
                  <input type="hidden" value = "<?= $model->id ?>" name = "id" />  
 
                     <label for="nome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" name="nome" id="nome"  value="<?= $model->nome ?>" >
+                    <input type="text" class="form-control" name="nome" required id="nome"  value="<?= $model->nome ?>" >
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="sobrenome" class="form-label">Sobrenome</label>
