@@ -2,7 +2,9 @@
 
     class PessoaModel
     {
-       public $id, $nome, $sobrenome, $cpf, $cep, $estado, $cidade, $rua, $numero, $plano_saude, $tipo_usuario, $senha;
+       public $idPaciente, $nome, $sobrenome, $cpf, $cep, $estado, $cidade, $rua, $numero, $planoSaude, $tipoPessoa, $senha;
+
+       public $descricao;
 
        public $rows;
        
@@ -23,33 +25,40 @@
            return $senha;
        }
 
+
        public function save()
-       {
+        {
 
         
-        include 'App/DAO/PessoaDAO.php';
-        $dao = new PessoaDAO();
+            include 'App/DAO/PessoaDAO.php';
+            $dao = new PessoaDAO();
 
 
-        if(empty($this->id))
-        {
-            $dao->insert($this);
+            if(empty($this->idPaciente))
+            {
+                $dao->insert($this);
 
-        } else
-        {
-            $dao->update($this);
-       
-      
-       }
+               
+             
+             
+            } else
+            {
+                $dao->update($this);
+               
+        
+            }
+
         }
 
-        public function delete(int $id)
+        public function delete(int $idPaciente)
         {
             include 'App/DAO/PessoaDAO.php';
 
             $dao = new PessoaDAO();
-            $dao->delete($id);
+            $dao->delete($idPaciente);
         }
+
+
 
        public function getAllRows()
        {
@@ -60,15 +69,28 @@
 
        }
 
-       public function getById(int $id)
+
+
+
+       public function getById(int $idPaciente)
        {
         include 'App/DAO/PessoaDAO.php';
         $dao = new PessoaDAO(); 
-        $obj =  $dao->selectById($id);
+        $obj =  $dao->selectById($idPaciente);
 
         return ($obj) ? $obj : new PessoaModel;
 
         }
+
+
+        /*
+        public function saveDescription()
+        {
+            include 'App/DAO/PessoaDAO.php';
+            $dao = new PessoaDAO();
+            $obj = $dao->insertDescription($this->descricao);
+        }
+        */
     
     }
       

@@ -1,72 +1,64 @@
 <?php
+// routes.php
+
 include 'App/Controller/PessoaController.php'; 
 include 'App/Controller/MedicamentoController.php';
+
+$url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+switch($url)
+{
+    case '/':
+        header("location: App/View/modules/Pessoa/funcionario.php");
+    break;
+
+    case '/pessoa':
+        PessoaController::index();
+    break;
     
-   $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    case '/pessoa/form':
+        PessoaController::form();
+    break;
 
+    case '/pessoa/form/save':
+        PessoaController::save();
+    break;
 
-    switch($url)
-    {
-        case '/':
-            header("location: App/View/modules/Pessoa/funcionario.php");
-        break;
+    case '/pessoa/delete':
+        PessoaController::delete();
+    break;
 
-        case '/pessoa':
-            PessoaController::index();
-        break;
-        
-        case '/pessoa/form':
-            PessoaController::form();
-        break;
+    case '/medicamento':
+        MedicamentoController::index();
+    break;
 
-        case '/pessoa/form/save':
-            PessoaController::save();
-        break;
+    case '/medicamento/formConsulta':
+        MedicamentoController::formConsulta();
+    break;
 
-        case '/pessoa/delete':
-            PessoaController:: delete();
-        break;
+    case '/medicamento/Consultar';
+        MedicamentoController::Consulta();
+    break;
 
+    case '/medicamento/form':
+        MedicamentoController::form();
+    break;
 
+    case '/medicamento/form/save':
+        MedicamentoController::save();
+    break;
 
-        case '/medicamento':
-            MedicamentoController:: index();
-        break;
+    case '/paciente';
+        PessoaController:: indexPaciente();
 
-        
-        case '/medicamento/formConsulta':
-            MedicamentoController::formConsulta();
-        break;
-
-        
-
-        case'/medicamento/Consultar';
-            MedicamentoController::Consulta();
-        break;
-
-        
+    case '/paciente/descricao/save':
+        PessoaController::saveDescription();
+    break;
         
 
-        case '/medicamento/form':
-            MedicamentoController::form();
-        break;
-        
-
-        case '/medicamento/form/save':
-            MedicamentoController::save();
-        break;
-
-        default:
-            echo "Erro 404";
-        break;
-        
-    }
-     /*
-   
-    if ($_SERVER['REQUEST_URI'] !== '/caminho/desejado') {
-        // Redirecionar para a URL desejada
-        header('Location: /caminho/desejado', true, 301);
-        exit;
-    }
-     */
+    default:
+        header("HTTP/1.0 404 Not Found");
+        echo "Erro 404";
+    break;
+}
 ?>
