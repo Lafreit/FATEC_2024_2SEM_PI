@@ -2,6 +2,11 @@
 
 //Caminho onde as imagens serão armazenadas
 $uploadDir = "C:/xampp/htdocs/testeimg/";
+
+
+
+
+
 function consultarCEP($cep)
 {
     $cep = preg_replace('/[^0-9]/', '', $cep);
@@ -113,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
             <h2 class="mb-4">Formulário de Cadastro</h2>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                 <input type="hidden" value = "<?= $model->id ?>" name = "id" />  
+                 <input type="hidden" value = "<?= $model->idPaciente ?>" name = "idPaciente" />  
 
                     <label for="nome" class="form-label">Nome</label>
                     <input type="text" class="form-control" name="nome" required id="nome"  value="<?= $model->nome ?>" >
@@ -126,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="cpf" class="form-label">CPF</label>
-                    <input type="text" class="form-control" name="cpf" value="<?= $model->cpf ?>" placeholder="CPF">
+                    <input type="text" class="form-control" name="cpf" id="cpf" value="<?= $model->cpf ?>" placeholder="CPF">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="cep" class="form-label">CEP</label>
@@ -154,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="plano" class="form-label">Plano de Saúde</label>
-                    <select class="form-select" name="plano" id="plano">
+                    <select class="form-select" name="planoSaude" id="planoSaude">
                         <option value="" selected disabled>Selecione o Plano de Saúde</option>
                         <option value="sulamerica">SulAmérica Saúde</option>
                         <option value="amil">Amil</option>
@@ -166,8 +171,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="tipo_usuario" class="form-label">Tipo de Usuário</label>
-                    <select class="form-select" name="tipo_usuario" id="tipo_usuario">
+                    <label for="tipoPessoa" class="form-label">Tipo de Usuário</label>
+                    <select class="form-select" name="tipoPessoa" id="tipoPessoa">
                         <option value="" selected disabled>Selecione a Situação</option>
                         <option value="dependente">Dependente</option>
                         <option value="pessoa">Pessoa</option>

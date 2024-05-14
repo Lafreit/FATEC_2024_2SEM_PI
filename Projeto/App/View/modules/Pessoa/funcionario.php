@@ -27,6 +27,12 @@
             <h2>Cadastrar Paciente</h2>
             <p>Cadastre, atualize e exclua.</p>
         </a>
+
+        <a href="/pessoa" class="box1">
+            <i class="fas fa-comments"></i>
+            <h2>Consultar Registros</h2>
+            <p>Consulte seus pacientes</p>
+        </a>
     </div>
 </section>
 
