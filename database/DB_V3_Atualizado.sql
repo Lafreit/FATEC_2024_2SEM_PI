@@ -15,8 +15,8 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Copiando estrutura do banco de dados para bdclinicapi
-CREATE DATABASE IF NOT EXISTS `bdclinicapi` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+
+CREATE DATABASE IF NOT EXISTS `bdclinicapi`;
 USE `bdclinicapi`;
 
 -- Copiando estrutura para procedure bdclinicapi.consultar_medicacao
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `efeitoscolaterais` (
   PRIMARY KEY (`idEfeitosColaterais`),
   KEY `pacienteID` (`pacienteID`),
   CONSTRAINT `efeitoscolaterais_ibfk_1` FOREIGN KEY (`pacienteID`) REFERENCES `paciente` (`idPaciente`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Exportação de dados foi desmarcado.
 
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `medicamentosconsulta` (
   `tipo` varchar(255) NOT NULL,
   `uso` text NOT NULL,
   PRIMARY KEY (`idMedicamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=185 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Exportação de dados foi desmarcado.
 
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `paciente` (
   `tipoPessoa` varchar(20) NOT NULL,
   `senha` varchar(16) NOT NULL,
   PRIMARY KEY (`idPaciente`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Exportação de dados foi desmarcado.
 
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `prescricao` (
   KEY `id_medicamentosconsulta` (`id_medicamentosconsulta`),
   CONSTRAINT `prescricao_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`idPaciente`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `prescricao_ibfk_2` FOREIGN KEY (`id_medicamentosconsulta`) REFERENCES `medicamentosconsulta` (`idMedicamento`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Exportação de dados foi desmarcado.
 
