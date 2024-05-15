@@ -4,7 +4,7 @@
     {
        public $idPaciente, $nome, $sobrenome, $cpf, $cep, $estado, $cidade, $rua, $numero, $planoSaude, $tipoPessoa, $senha;
 
-       public $descricao;
+
 
        public $rows;
        

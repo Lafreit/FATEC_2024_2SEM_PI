@@ -33,6 +33,13 @@
             <h2>Consultar Registros</h2>
             <p>Consulte seus pacientes</p>
         </a>
+
+
+        <a href="/prescricao/form" class="box1">
+            <i class="fas fa-history"></i>
+            <h2>Cadastrar Prescricao</h2>
+      
+        </a>
     </div>
 </section>
 
