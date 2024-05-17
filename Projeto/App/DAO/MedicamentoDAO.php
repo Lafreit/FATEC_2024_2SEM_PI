@@ -35,14 +35,15 @@ class MedicamentoDAO extends PessoaDAO
 
     }
 
-    public function Consultar_Medicamento($parametro)
+    public function Consultar_Paciente($parametro)
     {   
 
         try
         {
-        $sql = "CALL consultar_medicacao($parametro)";
+        $sql = "CALL consultar_medicacao(?)";
 
         $stmt = $this->conexao->prepare($sql);
+        $stmt->bindParam(1, $parametro);
         $stmt->execute();
 
         } catch(PDOException $e)

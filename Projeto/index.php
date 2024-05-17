@@ -3,6 +3,7 @@
 
 include 'App/Controller/PessoaController.php'; 
 include 'App/Controller/MedicamentoController.php';
+include 'App/Controller/PrescricaoController.php';
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -47,14 +48,22 @@ switch($url)
     case '/medicamento/form/save':
         MedicamentoController::save();
     break;
-
+        /*
     case '/paciente';
         PessoaController:: indexPaciente();
 
     case '/paciente/descricao/save':
         PessoaController::saveDescription();
     break;
-        
+        */
+
+    case '/prescricao/form':
+        PrescricaoController::form();
+    break;
+
+    case '/prescricao/form/save':
+        PrescricaoController::save();
+    break;
 
     default:
         header("HTTP/1.0 404 Not Found");
