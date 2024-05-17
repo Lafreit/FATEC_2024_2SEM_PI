@@ -19,7 +19,8 @@ class MedicamentoModel
     {
         include 'App/DAO/MedicamentoDAO.php';
         $dao = new MedicamentoDAO();
-        $this->result = $dao->Consultar_Medicamento($this->parametro);
+        $this->result = $dao->Consultar_Paciente($this->parametro);
+       
 
     }
 
