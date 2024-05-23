@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17/05/2024 às 14:57
+-- Tempo de geração: 24/05/2024 às 01:21
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `bdclinicapi`
 --
+CREATE DATABASE IF NOT EXISTS `bdclinicapi` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `bdclinicapi`;
 
 DELIMITER $$
 --
@@ -120,7 +122,8 @@ CREATE TABLE `medico` (
   `dataNascimento` date NOT NULL,
   `cpf` varchar(14) NOT NULL,
   `especialidade` varchar(255) NOT NULL,
-  `telefone` varchar(24) NOT NULL
+  `telefone` varchar(24) NOT NULL,
+  `senha` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -172,24 +175,10 @@ ALTER TABLE `efeitoscolaterais`
   ADD KEY `pacienteID` (`pacienteID`);
 
 --
--- Índices de tabela `imagem`
---
-ALTER TABLE `imagem`
-  ADD PRIMARY KEY (`idImg`),
-  ADD KEY `pacienteID` (`pacienteID`),
-  ADD KEY `medicoID` (`medicoID`);
-
---
 -- Índices de tabela `medicamentosconsulta`
 --
 ALTER TABLE `medicamentosconsulta`
   ADD PRIMARY KEY (`idMedicamento`);
-
---
--- Índices de tabela `medico`
---
-ALTER TABLE `medico`
-  ADD PRIMARY KEY (`numCRM`);
 
 --
 -- Índices de tabela `paciente`
@@ -214,12 +203,6 @@ ALTER TABLE `prescricao`
 --
 ALTER TABLE `efeitoscolaterais`
   MODIFY `idEfeitosColaterais` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `imagem`
---
-ALTER TABLE `imagem`
-  MODIFY `idImg` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `medicamentosconsulta`
@@ -248,13 +231,6 @@ ALTER TABLE `prescricao`
 --
 ALTER TABLE `efeitoscolaterais`
   ADD CONSTRAINT `efeitoscolaterais_ibfk_1` FOREIGN KEY (`pacienteID`) REFERENCES `paciente` (`idPaciente`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Restrições para tabelas `imagem`
---
-ALTER TABLE `imagem`
-  ADD CONSTRAINT `imagem_ibfk_1` FOREIGN KEY (`pacienteID`) REFERENCES `paciente` (`idPaciente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `imagem_ibfk_2` FOREIGN KEY (`medicoID`) REFERENCES `medico` (`numCRM`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Restrições para tabelas `prescricao`

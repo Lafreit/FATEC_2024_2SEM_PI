@@ -22,11 +22,16 @@
             
         }
 
-
-        public static function indexPaciente()
+        
+        public static function HomePaciente()
         {
-            include 'App/view/modules/Pessoa/telapaciente.php';
+            include 'App/view/modules/Pessoa/indexpaciente.php';
         }
+        public static function HomeMedico()
+        {
+            include 'App/view/modules/Pessoa/funcionario.php';
+        }
+
 
 
 

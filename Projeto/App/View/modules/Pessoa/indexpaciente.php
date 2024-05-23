@@ -15,6 +15,7 @@
                 <li><a href="#lembretes">Lembretes</a></li>
                 <li><a href="#historico">Histórico</a></li>
                 <li><a href="#comentarios">Comentários</a></li>
+                <li><a href="/logout">Sair</a></li>
             </ul>
         </nav>
     </header>

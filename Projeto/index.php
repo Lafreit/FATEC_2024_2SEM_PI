@@ -5,102 +5,103 @@ include 'App/Controller/PessoaController.php';
 include 'App/Controller/MedicamentoController.php';
 include 'App/Controller/PrescricaoController.php';
 include 'App/Controller/LoginController.php';
+include_once 'App/Service/Auth.php';
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-switch($url)
-{
-    case '/':
-        //header("location: App/View/modules/Pessoa/funcionario.php");
-        PessoaController::telaIncial();
-    break;
-
-
+switch ($url) {
+    // Rotas de Login
     case '/form/login':
-        LoginController:: form();
-    break;
-
+        Auth::exibirMensagemErro();
+        LoginController::form();
+        break;
 
     case '/login':
         LoginController::Autenticar();
-    break;
+        break;
 
     case '/logout':
         LoginController::logout();
-    break;
+        break;
 
+    // Rotas protegidas - CadastroPaciente
     case '/pessoa':
+        Auth::validador();
         PessoaController::index();
-    break;
-    
+        break;
+
     case '/pessoa/form':
+        Auth::validador();
         PessoaController::form();
-    break;
+        break;
 
     case '/pessoa/form/save':
+        Auth::validador();
         PessoaController::save();
-    break;
+        break;
 
-    case '/pessoa/delete':
-        PessoaController::delete();
-    break;
+    // case '/pessoa/delete':
+    //     Auth::validador();
+    //     PessoaController::delete();
+    //     break;
 
-
+    // Telas
+    case '/':
+        PessoaController::telaIncial();
+        break;
 
     case '/telaP':
-        include 'App/View/modules/Pessoa/indexpaciente.php';
-    break;
-    
+        Auth::validador();
+        PessoaController::HomePaciente();
+        break;
+
     case '/telaM':
-        include 'App/View/modules/Pessoa/funcionario.php';
+        Auth::validador();
+        PessoaController::HomeMedico();
+        break;
 
-
+    // Rotas protegidas - Medicamento
     case '/medicamento':
+        Auth::validador();
         MedicamentoController::index();
-    break;
+        break;
 
     case '/medicamento/formConsulta':
+        Auth::validador();
         MedicamentoController::formConsulta();
-    break;
+        break;
 
-    case '/medicamento/Consultar';
+    case '/medicamento/Consultar':
+        Auth::validador();
         MedicamentoController::Consulta();
-    break;
+        break;
 
     case '/medicamento/form':
+        Auth::validador();
         MedicamentoController::form();
-    break;
+        break;
 
     case '/medicamento/form/save':
+        Auth::validador();
         MedicamentoController::save();
-    break;
+        break;
 
-
-
-
-
-
-    
-        /*
-    case '/paciente';
-        PessoaController:: indexPaciente();
-
-    case '/paciente/descricao/save':
-        PessoaController::saveDescription();
-    break;
-        */
-
+    // Rotas protegidas - Prescrição
     case '/prescricao/form':
+        Auth::exibirMensagemSucesso();
+        Auth::validador();
         PrescricaoController::form();
-    break;
+        break;
 
     case '/prescricao/form/save':
+        Auth::validador();
         PrescricaoController::save();
-    break;
+        break;
 
+    // Rota padrão (404)
     default:
         header("HTTP/1.0 404 Not Found");
         echo "Erro 404";
-    break;
+        break;
 }
 ?>

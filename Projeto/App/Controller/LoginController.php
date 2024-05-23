@@ -16,28 +16,17 @@
             $model->tipo = $_POST['tipo'];
             $model->consultarAcesso();
         }
-          
 
-       
-            public static function logout()
-            {
-                // Inicia a sessão se ainda não estiver iniciada
-                session_start();
-        
-                // Destroi todas as variáveis de sessão
-                $_SESSION = array();
-        
-                // Se desejar destruir a sessão completamente, descomente a linha abaixo
-                // session_destroy();
-        
-                // Redireciona o usuário para a página de login
-                header("Location: /form/login");
-                exit();
-            }
-      
-     
+        public static function logout()
+        {
+            Auth::logout();
+        }
     }
 
+      
+          
+
+    
 
 
 ?>

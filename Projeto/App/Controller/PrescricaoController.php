@@ -2,6 +2,8 @@
 
     class PrescricaoController
     {
+
+        
         public static function form()
         {
             include 'App/View/modules/Prescricao/CadastrarPrescricao.php';

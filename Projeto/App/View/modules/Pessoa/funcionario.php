@@ -1,13 +1,3 @@
-<?php
-session_start();
-// Verifica se a sessão está iniciada e se o usuário está logado
-if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
-    // Se não estiver logado, redireciona para a página de login
-    header("Location: /form/login");
-    exit();
-}
-?>
-
 
 
 
