@@ -4,13 +4,29 @@
 include 'App/Controller/PessoaController.php'; 
 include 'App/Controller/MedicamentoController.php';
 include 'App/Controller/PrescricaoController.php';
+include 'App/Controller/LoginController.php';
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 switch($url)
 {
     case '/':
-        header("location: App/View/modules/Pessoa/funcionario.php");
+        //header("location: App/View/modules/Pessoa/funcionario.php");
+        PessoaController::telaIncial();
+    break;
+
+
+    case '/form/login':
+        LoginController:: form();
+    break;
+
+
+    case '/login':
+        LoginController::Autenticar();
+    break;
+
+    case '/logout':
+        LoginController::logout();
     break;
 
     case '/pessoa':
@@ -28,6 +44,16 @@ switch($url)
     case '/pessoa/delete':
         PessoaController::delete();
     break;
+
+
+
+    case '/telaP':
+        include 'App/View/modules/Pessoa/indexpaciente.php';
+    break;
+    
+    case '/telaM':
+        include 'App/View/modules/Pessoa/funcionario.php';
+
 
     case '/medicamento':
         MedicamentoController::index();
@@ -48,6 +74,13 @@ switch($url)
     case '/medicamento/form/save':
         MedicamentoController::save();
     break;
+
+
+
+
+
+
+    
         /*
     case '/paciente';
         PessoaController:: indexPaciente();

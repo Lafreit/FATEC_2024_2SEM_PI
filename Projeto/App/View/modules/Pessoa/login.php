@@ -17,9 +17,13 @@
         <div class="titulo">
             <p>Login</p>
         </div>
-        <form id="loginform">
-            <input type="text" name="usuario" placeholder="Usuário" required>
-            <input type="password" placeholder="Senha" name="password" required>
+        <form id="loginform" action = '/login' method = 'post'>
+            <input type="text" name="cpf" placeholder="cpf" required>
+            <input type="password" placeholder="senha" name="senha" required>
+            <label>Pessoa</label>
+            <input type="radio" id ='Pessoa' value = 'Pessoa'name="tipo" required>
+            <label>Medico</label>
+            <input type="radio" id = 'Medico' value = 'Medico'name="tipo" required>
             <button type="submit">Iniciar sessão</button>
         </form>
         <div class="pie-form">

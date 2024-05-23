@@ -1,3 +1,16 @@
+<?php
+session_start();
+// Verifica se a sessão está iniciada e se o usuário está logado
+if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
+    // Se não estiver logado, redireciona para a página de login
+    header("Location: /form/login");
+    exit();
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -38,6 +51,13 @@
         <a href="/prescricao/form" class="box1">
             <i class="fas fa-history"></i>
             <h2>Cadastrar Prescricao</h2>
+      
+        </a>
+
+
+        <a href="/logout" class="box1">
+            <i class="fas fa-history"></i>
+            <h2>logout</h2>
       
         </a>
     </div>
