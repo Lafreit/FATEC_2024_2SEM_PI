@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -38,6 +41,13 @@
         <a href="/prescricao/form" class="box1">
             <i class="fas fa-history"></i>
             <h2>Cadastrar Prescricao</h2>
+      
+        </a>
+
+
+        <a href="/logout" class="box1">
+            <i class="fas fa-history"></i>
+            <h2>logout</h2>
       
         </a>
     </div>

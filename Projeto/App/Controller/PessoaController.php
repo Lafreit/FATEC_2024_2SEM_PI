@@ -4,6 +4,14 @@
         #cada um dos metodos vai ser responsável por processar uma rota e serão  staticos
 
         #vai me devolver a lista de dados do usuario
+        
+        
+        public static function telaIncial()
+        {
+           include 'App/View/modules/Pessoa/index1.php';
+        }
+        
+        
         public static function index()
         {
             include 'App/Model/PessoaModel.php';
@@ -14,11 +22,16 @@
             
         }
 
-
-        public static function indexPaciente()
+        
+        public static function HomePaciente()
         {
-            include 'App/view/modules/Pessoa/telapaciente.php';
+            include 'App/view/modules/Pessoa/indexpaciente.php';
         }
+        public static function HomeMedico()
+        {
+            include 'App/view/modules/Pessoa/funcionario.php';
+        }
+
 
 
 

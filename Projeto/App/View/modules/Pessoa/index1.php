@@ -26,7 +26,7 @@
                     <li><a href="#">SOBRE</a></li>
                     <li><a href="#">CONTATO</a></li>
                     <li><a href="#">BLOG</a></li>
-                    <li><a href="login.html">Área do Usuário</a></li>
+                    <li><a href="/form/login">Área do Usuário</a></li>
                 </ul>
             </div>
             <!-- Ícone do menu mobile -->

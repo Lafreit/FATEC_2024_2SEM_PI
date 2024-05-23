@@ -1,3 +1,8 @@
+<?php
+ 
+ 
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +45,12 @@
 
             <div class="btn-container">
                 <button type="submit" class="btn">Cadastrar</button>
+            </div>
+
+            <div class="btn-container">
+           <button type = "submit" class="btn"> <a href="/telaM">Voltar</a></button>
+            
+       
             </div>
         </form>
     </div>
