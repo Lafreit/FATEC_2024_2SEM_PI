@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I9 Solution</title>
     <!-- Ícone da página -->
-    <link rel="icon" href="img/log1.png" type="image/x-icons">
+    <link rel="icon" href="../img/log1.png" type="image/x-icons">
     <!-- Estilos -->
-    <link rel="stylesheet" href="css/telaprincipal.css">
+    <link rel="stylesheet" href="../css/telaprincipal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" 
     integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,15 +18,15 @@
     <section class="background">
         <!-- Barra de navegação -->
         <nav class="navbar">
-            <a href="#" class="logo"><img src="img/log1.png" alt=""></a>
+            <a href="#" class="logo"><img src="../img/log1.png" alt=""></a>
             <div class="navbar-items h-class">
                 <ul class="nav v-class">
                     <!-- Links de navegação -->
                     <li><a href="#">INÍCIO</a></li>
-                    <li><a href="#">SOBRE</a></li>
+                    <li><a href="#sobre-nos">SOBRE</a></li>
                     <li><a href="#">CONTATO</a></li>
-                    <li><a href="#">BLOG</a></li>
-                    <li><a href="/form/login">Área do Usuário</a></li>
+                    <li><a href="#">DEPARTAMENTO</a></li>
+                    <li><a href="login.php">Área do Usuário</a></li>
                 </ul>
             </div>
             <!-- Ícone do menu mobile -->
@@ -44,8 +44,20 @@
                     <a href="" class="btn btn1">Visite Para Saber Mais</a>
                 </div>
             </div>
-            <!-- Formulário de login -->
-            <!-- Aqui seria inserido um formulário de login, se necessário -->
+            <!-- Slideshow -->
+            <div class="slideshow">
+                <a href="seu-link1">
+                    <img src="../img/pic4.jpg" alt="Imagem 1">
+                </a>
+                <a href="seu-link2">
+                    <img src="imagem2.jpg" alt="Imagem 2">
+                </a>
+                <a href="seu-link3">
+                    <img src="imagem3.jpg" alt="Imagem 3">
+                </a>
+                </div>
+            </div>
+              
         </div>
     </section>
     <!-- Seção de serviços -->
@@ -122,13 +134,13 @@
         </div>
     </section>
     <!-- Seção "Sobre Nós" -->
-    <section class="about">
+    <section class="about" id="sobre-nos">
         <!-- Título da seção -->
         <h1 class="heading">Sobre Nós</h1>
         <!-- Linha de informações sobre a empresa -->
         <div class="row row1">
             <div class="left">
-                <img src="img/pic2.jpg" alt="">
+                <img src="../img/pic2.jpg" alt="">
             </div>
             <div class="right">
                 <!-- Descrição da empresa -->
@@ -205,14 +217,27 @@
                     <p>Controle de Qualidade</p>
                     <p>Cuidados Médicos Completos</p>
                     <!-- Logotipo -->
-                    <img src="img/log2.png" alt="Logo Cuidados Médicos Completos" style="margin-top: 10px;">
+                    <img src="../img/log2.png" alt="Logo Cuidados Médicos Completos" style="margin-top: 10px;">
                 </div>
             </div>
         </div>
         <!-- Parágrafo adicional (possivelmente informações de direitos autorais) -->
-        <p class="para"></p>
+        <p class="para">I9 Solution</p>
     </footer>
     <!-- Script JavaScript -->
-    <script src="index.js"></script>
+    <script src="../js/index.js"></script>
+    <!-- JavaScript para rolagem suave -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
+

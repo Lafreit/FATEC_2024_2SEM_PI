@@ -3,7 +3,7 @@
     <!-- Definição do título da página -->
     <title>Receita Médica</title>
     <!-- Inclusão do arquivo de estilo CSS -->
-    <link rel="stylesheet" href="css/consulta.css">
+    <link rel="stylesheet" href="../css/receita.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
             <td>
                 <!-- Formulário de receita médica -->
                 <div class="col-sm-6">
-                    <h2>Receita Médica</h2>
+                    
                 </div>
                 <form autocomplete="off" onsubmit="onFormSubmit()">
                     <!-- Campo para inserir o nome do paciente -->

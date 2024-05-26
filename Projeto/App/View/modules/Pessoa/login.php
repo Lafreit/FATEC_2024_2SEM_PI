@@ -9,27 +9,19 @@
     <link rel="icon" href="img/log1.png" type="image/x-icons">
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-    <div class="background-image"></div> <!-- Div para a imagem de fundo -->
+    <div class="background-image"></div>
     <div id="login">
         <div class="titulo">
             <p>Login</p>
         </div>
-        <form id="loginform" action = '/login' method = 'post'>
-            <input type="text" name="cpf" placeholder="cpf" required>
-            <input type="password" placeholder="senha" name="senha" required>
-            <label>Pessoa</label>
-            <input type="radio" id ='Pessoa' value = 'Pessoa'name="tipo" required>
-            <label>Medico</label>
-            <input type="radio" id = 'Medico' value = 'Medico'name="tipo" required>
+        <form id="loginform">
+            <input type="text" name="usuario" placeholder="Usuário" required>
+            <input type="password" placeholder="Senha" name="password" required>
             <button type="submit">Iniciar sessão</button>
         </form>
-        <div class="pie-form">
-            <a href="#"><button class="button">Esqueceu sua senha?</button></a>
-            <a href="#"><button class="button">Registre-se</button></a>
-        </div>
     </div>
 </body>
 </html>
