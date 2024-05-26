@@ -8,7 +8,7 @@
         
         public static function telaIncial()
         {
-           include 'App/View/modules/Pessoa/index1.php';
+           include 'App/View/modules/Pessoa/index.php';
         }
         
         
@@ -18,18 +18,18 @@
 
             $model = new PessoaModel();
             $model->getAllRows();
-            include 'App/View/modules/Pessoa/ListaPessoa.php';
+            include 'App/View/modules/Pessoa/index.php';
             
         }
 
         
         public static function HomePaciente()
         {
-            include 'App/view/modules/Pessoa/indexpaciente.php';
+            include 'App/view/modules/Pessoa/paciente.php';
         }
         public static function HomeMedico()
         {
-            include 'App/view/modules/Pessoa/funcionario.php';
+            include 'App/view/modules/Pessoa/medico.php';
         }
 
 
@@ -47,7 +47,7 @@
            
             
 
-            include 'App/View/modules/Pessoa/CadastroPaciente.php';
+            include 'App/View/modules/Pessoa/cadastro.php';
         }
 
 
