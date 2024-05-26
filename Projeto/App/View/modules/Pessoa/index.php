@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I9 Solution</title>
     <!-- Ícone da página -->
-    <link rel="icon" href="../img/log1.png" type="image/x-icons">
+    <link rel="icon" href="App/View/modules/img/log1.png" type="image/x-icons">
     <!-- Estilos -->
-    <link rel="stylesheet" href="../css/telaprincipal.css">
+    <link rel="stylesheet" href="App/View/modules/css/telaprincipal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" 
     integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -26,7 +26,7 @@
                     <li><a href="#sobre-nos">SOBRE</a></li>
                     <li><a href="#">CONTATO</a></li>
                     <li><a href="#">DEPARTAMENTO</a></li>
-                    <li><a href="login.php">Área do Usuário</a></li>
+                    <li><a href="/form/login">Área do Usuário</a></li>
                 </ul>
             </div>
             <!-- Ícone do menu mobile -->

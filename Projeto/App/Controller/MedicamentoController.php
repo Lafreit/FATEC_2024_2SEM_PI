@@ -42,7 +42,7 @@ public static function save()
 
 public static function formConsulta()
 {
-    include 'App/View/modules/Pessoa/ConsultarCPF.php';
+    include 'App/View/modules/Pessoa/consultar.php';
 }
 
 
@@ -64,7 +64,7 @@ public static function Consulta()
     }
 
     // Inclui a view ConsultarP.php
-    include 'App/View/modules/Pessoa/ConsultarP.php';
+    include 'App/View/modules/Pessoa/consultarp.php';
 }
 
 }

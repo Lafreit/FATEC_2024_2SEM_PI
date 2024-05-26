@@ -6,7 +6,7 @@
     <link rel="icon" href="img/log1.png" type="image/x-icons">
     <title>Dashboard Médico</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/medico.css">
+    <link rel="stylesheet" href="App/View/modules/css/medico.css">
     <!-- Inclua outros estilos CSS aqui -->
     <style>
         /* Adicione estilos personalizados aqui */
@@ -45,7 +45,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/log1.png" type="image/x-icons">
     <title>Pacientes</title>
-    <link rel="stylesheet" href="../css/opcpacientes.css">
+    <link rel="stylesheet" href="App/View/modules/css/opcpacientes.css">
 </head>
 <body>
     <header>
@@ -53,7 +53,7 @@
             <h2 class="logo-nombre">
         </div>
     </header>
-
+    
     <!-- Crud -->
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">

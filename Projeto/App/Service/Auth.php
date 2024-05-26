@@ -7,15 +7,13 @@ class Auth
             session_start();
         }
 
-        if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) 
-        {
+        if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             // Se não estiver logado, define a mensagem de erro e redireciona para a página de login
             $_SESSION['error_message'] = "Por favor, faça login para acessar esta página.";
             header("Location: /form/login");
             exit();
         }
     }
-
 
     public static function iniciarSessao($result)
     {
@@ -26,6 +24,8 @@ class Auth
         if (!empty($result)) {
             // Se os dados de login forem encontrados, inicia a sessão
             $_SESSION["logged_in"] = true;
+            $_SESSION["user_id"] = $result['id']; // Armazena o ID do usuário na sessão
+            $_SESSION["user_data"] = $result; // Opcional: Armazena dados adicionais do usuário
             return true;
         } else {
             // Se os dados de login não forem encontrados, define a mensagem de erro e redireciona para o formulário de login
@@ -33,10 +33,21 @@ class Auth
             header('Location: /form/login');
             exit();
         }
-        }
-        
+    }
 
-    
+    public static function getLoggedInUserId()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
+            return $_SESSION["user_id"];
+        } else {
+            return null; // Retorna null se nenhum usuário estiver logado
+        }
+    }
+
     public static function exibirMensagemErro()
     {
         if (session_status() == PHP_SESSION_NONE) {
@@ -45,7 +56,6 @@ class Auth
 
         // Verifica se existe uma mensagem de erro na variável de sessão
         if (isset($_SESSION['error_message'])) {
-        
             echo '<div style="color: red;">' . $_SESSION['error_message'] . '</div>';
 
             // Limpa a variável de sessão para que a mensagem de erro não persista após um novo acesso à página de login
@@ -53,30 +63,24 @@ class Auth
         }
     }
 
-
     public static function exibirMensagemSucesso()
     {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
 
-        if (!empty( $_SESSION['success_message'])) {
-        
+        if (!empty($_SESSION['success_message'])) {
             echo '<div>' . $_SESSION['success_message'] . '</div>';
-
             unset($_SESSION['success_message']);
-
-         
         }
-    }   
-
-
+    }
 
     public static function logout()
     {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
 
-       
         session_destroy();
 
         // Redireciona o usuário para a página de login

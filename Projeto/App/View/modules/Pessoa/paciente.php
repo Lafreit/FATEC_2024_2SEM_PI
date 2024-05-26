@@ -6,7 +6,7 @@
     <link rel="icon" href="img/log1.png" type="image/x-icons">
     <title>Dashboard Paciente</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/telapaciente.css">
+    <link rel="stylesheet" href="App/View/modules/css/telapaciente.css">
     <!-- Inclua outros estilos CSS aqui -->
     <style>
         /* Adicione estilos personalizados aqui */
@@ -33,6 +33,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="relatorio-tab" data-toggle="tab" href="#relatorio" role="tab" aria-controls="relatorio" aria-selected="false">Relatório Completo</a>
+            </li>
+            <li>
+                <a class="btn" id="relatorio-tab" href="/logout" >Logout</a>
             </li>
         </ul>
 

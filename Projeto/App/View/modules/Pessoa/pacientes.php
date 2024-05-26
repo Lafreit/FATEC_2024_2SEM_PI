@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/log1.png" type="image/x-icons">
     <title>Pacientes</title>
-    <link rel="stylesheet" href="../css/pacientes.css">
+    <link rel="stylesheet" href="App/View/modules/css/pacientes.css">
 </head>
 <body>
     <header>
