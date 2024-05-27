@@ -2,7 +2,9 @@
 
     class PessoaModel
     {
-       public $idPaciente, $nome, $sobrenome, $cpf, $cep, $estado, $cidade, $rua, $numero, $planoSaude, $tipoPessoa, $senha;
+       public $idPaciente, $nome, $sobrenome, $cpf, $cep, $estado, $cidade, $rua, $numero, $PlanoSaude, $tipoPessoa, $senha;
+
+       public $medico_id;
 
 
 
@@ -59,17 +61,14 @@
         }
 
 
-
-       public function getAllRows()
-       {
-        include 'App/DAO/PessoaDAO.php';
-        $dao = new PessoaDAO();
-
-        $this->rows = $dao->select();
-
-       }
-
-
+        public function getAllRows($medico_id)
+        {
+            include 'App/DAO/PessoaDAO.php';
+            $dao = new PessoaDAO();
+        
+            $this->rows = $dao->select($medico_id);
+        }
+        
 
 
        public function getById(int $idPaciente)

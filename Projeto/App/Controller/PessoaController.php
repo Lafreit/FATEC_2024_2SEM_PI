@@ -15,9 +15,9 @@
         public static function index()
         {
             include 'App/Model/PessoaModel.php';
-
+            $medico_id = Auth::getLoggedInUserId();
             $model = new PessoaModel();
-            $model->getAllRows();
+            $model->getAllRows($medico_id);
             include 'App/View/modules/Pessoa/listar.php';
             
         }
@@ -74,7 +74,9 @@
             $model->rua = $_POST['rua'];
             $model->numero = $_POST['numero'];
             $model->tipoPessoa = $_POST['tipoPessoa'];
-            $model->planoSaude = $_POST['planoSaude'];
+            $model->PlanoSaude = $_POST['planoSaude'];
+            $model->medico_id = Auth::getLoggedInUserId();
+         
           
             
             $model->save();

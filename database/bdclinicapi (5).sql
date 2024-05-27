@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24/05/2024 às 01:21
+-- Tempo de geração: 27/05/2024 às 21:48
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -38,32 +38,38 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `consultar_medicacao` (IN `cpf_pacie
         m.tipo, 
         e.descricao, 
         pr.data_prescricao, 
-        pr.dosagem
+        pr.dosagem,
+        me.nome AS 'Doutor(a)',
+        me.NumCRM
     FROM 
         paciente p
     LEFT JOIN 
-        efeitoscolaterais e ON p.idPaciente = e.pacienteID
+       efeitoscolaterais e ON p.idPaciente = e.id_paciente
     LEFT JOIN 
         prescricao pr ON p.idPaciente = pr.id_paciente
     LEFT JOIN 
         medicamentosconsulta m ON pr.id_medicamentosconsulta = m.idMedicamento
+   INNER JOIN
+   		medico me ON me.id = p.medico_id
     WHERE
         p.cpf = cpf_paciente;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `prescrever_medicacao` (IN `cpf_paciente` VARCHAR(20), IN `id_medicamentosconsulta` INT, IN `dosagem` VARCHAR(90), IN `instrucao` VARCHAR(255), IN `duracao` INT)   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prescrever_medicacao` (IN `cpf_paciente` VARCHAR(20), IN `id_medicamentosconsulta` INT, IN `dosagem` VARCHAR(90), IN `instrucao` VARCHAR(255), IN `duracao` INT, IN `CRM` INT)   BEGIN
 DECLARE paciente_id INT;
+DECLARE medico_id INT;
 
 -- Consultar o ID do paciente com base no CPF fornecido
 SELECT idPaciente INTO paciente_id FROM paciente WHERE cpf = cpf_paciente;
+SELECT id INTO medico_id FROM medico WHERE NumCRM = CRM;
 
 -- Verificar se o paciente existe
-IF paciente_id IS NULL THEN
+IF paciente_id IS NULL AND medico_id IS NULL THEN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Paciente não encontrado';
 ELSE
     -- Inserir a prescrição na tabela de prescrições
-    INSERT INTO prescricao (id_paciente, id_medicamentosconsulta, duracao, dosagem, instrucao)
-    VALUES (paciente_id, id_medicamentosconsulta, duracao, dosagem, instrucao);
+    INSERT INTO prescricao (id_paciente, id_medicamentosconsulta, duracao, dosagem, instrucao, medico_id)
+    VALUES (paciente_id, id_medicamentosconsulta, duracao, dosagem, instrucao, medico_id);
 
 END IF;
 
@@ -78,10 +84,17 @@ DELIMITER ;
 --
 
 CREATE TABLE `efeitoscolaterais` (
-  `idEfeitosColaterais` int(11) NOT NULL,
-  `descricao` text NOT NULL,
-  `pacienteID` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `descricao` varchar(255) NOT NULL,
+  `data_descricao` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_paciente` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELACIONAMENTOS PARA TABELAS `efeitoscolaterais`:
+--   `id_paciente`
+--       `paciente` -> `idPaciente`
+--
 
 -- --------------------------------------------------------
 
@@ -95,6 +108,10 @@ CREATE TABLE `imagem` (
   `pacienteID` int(11) DEFAULT NULL,
   `medicoID` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELACIONAMENTOS PARA TABELAS `imagem`:
+--
 
 -- --------------------------------------------------------
 
@@ -110,6 +127,10 @@ CREATE TABLE `medicamentosconsulta` (
   `uso` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- RELACIONAMENTOS PARA TABELAS `medicamentosconsulta`:
+--
+
 -- --------------------------------------------------------
 
 --
@@ -117,14 +138,19 @@ CREATE TABLE `medicamentosconsulta` (
 --
 
 CREATE TABLE `medico` (
-  `numCRM` int(20) NOT NULL,
-  `nomeCompleto` varchar(150) NOT NULL,
-  `dataNascimento` date NOT NULL,
+  `id` int(11) NOT NULL,
+  `NumCRM` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `data_nascimento` date NOT NULL,
   `cpf` varchar(14) NOT NULL,
   `especialidade` varchar(255) NOT NULL,
-  `telefone` varchar(24) NOT NULL,
-  `senha` varchar(16) NOT NULL
+  `telefone` varchar(20) DEFAULT NULL,
+  `senha` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELACIONAMENTOS PARA TABELAS `medico`:
+--
 
 -- --------------------------------------------------------
 
@@ -134,18 +160,25 @@ CREATE TABLE `medico` (
 
 CREATE TABLE `paciente` (
   `idPaciente` int(11) NOT NULL,
-  `nome` varchar(45) NOT NULL,
-  `sobrenome` varchar(45) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `sobrenome` varchar(255) NOT NULL,
   `cpf` varchar(14) NOT NULL,
-  `cep` varchar(14) NOT NULL,
-  `estado` varchar(20) NOT NULL,
-  `rua` varchar(30) NOT NULL,
-  `cidade` varchar(30) NOT NULL,
-  `numero` int(5) NOT NULL,
-  `planoSaude` varchar(50) NOT NULL,
-  `tipoPessoa` varchar(20) NOT NULL,
-  `senha` varchar(16) NOT NULL
+  `cep` varchar(10) NOT NULL,
+  `estado` varchar(255) NOT NULL,
+  `rua` varchar(255) NOT NULL,
+  `cidade` varchar(255) NOT NULL,
+  `numero` varchar(10) NOT NULL,
+  `PlanoSaude` varchar(255) DEFAULT NULL,
+  `tipoPessoa` varchar(50) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `medico_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELACIONAMENTOS PARA TABELAS `paciente`:
+--   `medico_id`
+--       `medico` -> `id`
+--
 
 -- --------------------------------------------------------
 
@@ -160,8 +193,19 @@ CREATE TABLE `prescricao` (
   `data_prescricao` timestamp NOT NULL DEFAULT current_timestamp(),
   `duracao` int(11) NOT NULL,
   `dosagem` varchar(50) NOT NULL,
-  `instrucao` varchar(255) DEFAULT NULL
+  `instrucao` varchar(255) DEFAULT NULL,
+  `medico_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- RELACIONAMENTOS PARA TABELAS `prescricao`:
+--   `id_paciente`
+--       `paciente` -> `idPaciente`
+--   `id_medicamentosconsulta`
+--       `medicamentosconsulta` -> `idMedicamento`
+--   `medico_id`
+--       `medico` -> `id`
+--
 
 --
 -- Índices para tabelas despejadas
@@ -171,8 +215,8 @@ CREATE TABLE `prescricao` (
 -- Índices de tabela `efeitoscolaterais`
 --
 ALTER TABLE `efeitoscolaterais`
-  ADD PRIMARY KEY (`idEfeitosColaterais`),
-  ADD KEY `pacienteID` (`pacienteID`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_paciente` (`id_paciente`);
 
 --
 -- Índices de tabela `medicamentosconsulta`
@@ -181,10 +225,17 @@ ALTER TABLE `medicamentosconsulta`
   ADD PRIMARY KEY (`idMedicamento`);
 
 --
+-- Índices de tabela `medico`
+--
+ALTER TABLE `medico`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `paciente`
 --
 ALTER TABLE `paciente`
-  ADD PRIMARY KEY (`idPaciente`);
+  ADD PRIMARY KEY (`idPaciente`),
+  ADD KEY `medico_id` (`medico_id`);
 
 --
 -- Índices de tabela `prescricao`
@@ -192,7 +243,8 @@ ALTER TABLE `paciente`
 ALTER TABLE `prescricao`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_paciente` (`id_paciente`),
-  ADD KEY `id_medicamentosconsulta` (`id_medicamentosconsulta`);
+  ADD KEY `id_medicamentosconsulta` (`id_medicamentosconsulta`),
+  ADD KEY `medico_id` (`medico_id`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -202,13 +254,19 @@ ALTER TABLE `prescricao`
 -- AUTO_INCREMENT de tabela `efeitoscolaterais`
 --
 ALTER TABLE `efeitoscolaterais`
-  MODIFY `idEfeitosColaterais` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `medicamentosconsulta`
 --
 ALTER TABLE `medicamentosconsulta`
   MODIFY `idMedicamento` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `medico`
+--
+ALTER TABLE `medico`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `paciente`
@@ -230,14 +288,21 @@ ALTER TABLE `prescricao`
 -- Restrições para tabelas `efeitoscolaterais`
 --
 ALTER TABLE `efeitoscolaterais`
-  ADD CONSTRAINT `efeitoscolaterais_ibfk_1` FOREIGN KEY (`pacienteID`) REFERENCES `paciente` (`idPaciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `efeitoscolaterais_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`idPaciente`) ON DELETE CASCADE;
+
+--
+-- Restrições para tabelas `paciente`
+--
+ALTER TABLE `paciente`
+  ADD CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`medico_id`) REFERENCES `medico` (`id`) ON DELETE CASCADE;
 
 --
 -- Restrições para tabelas `prescricao`
 --
 ALTER TABLE `prescricao`
-  ADD CONSTRAINT `prescricao_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`idPaciente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `prescricao_ibfk_2` FOREIGN KEY (`id_medicamentosconsulta`) REFERENCES `medicamentosconsulta` (`idMedicamento`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `prescricao_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`idPaciente`) ON DELETE CASCADE,
+  ADD CONSTRAINT `prescricao_ibfk_2` FOREIGN KEY (`id_medicamentosconsulta`) REFERENCES `medicamentosconsulta` (`idMedicamento`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prescricao_ibfk_3` FOREIGN KEY (`medico_id`) REFERENCES `medico` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
