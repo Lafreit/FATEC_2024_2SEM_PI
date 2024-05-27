@@ -64,7 +64,7 @@ public static function Consulta()
     }
 
     // Inclui a view ConsultarP.php
-    include 'App/View/modules/Pessoa/consultarp.php';
+    include 'App/View/modules/Pessoa/consultap.php';
 }
 
 }
