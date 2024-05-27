@@ -35,6 +35,8 @@ class Auth
         return isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true ? $_SESSION["user_id"] : null;
     }
 
+
+
     public static function logout()
     {
         self::startSession();
