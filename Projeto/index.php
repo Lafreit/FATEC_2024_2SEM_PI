@@ -12,7 +12,6 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 switch ($url) {
     // Rotas de Login
     case '/form/login':
-        Auth::exibirMensagemErro();
         LoginController::form();
         break;
 
@@ -88,7 +87,6 @@ switch ($url) {
 
     // Rotas protegidas - Prescrição
     case '/prescricao/form':
-        Auth::exibirMensagemSucesso();
         Auth::validador();
         PrescricaoController::form();
         break;

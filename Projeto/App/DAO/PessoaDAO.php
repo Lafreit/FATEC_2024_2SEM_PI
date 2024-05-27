@@ -14,7 +14,7 @@
         public function insert(PessoaModel $model)
         {
             #essa string sql vai ser processada, um preparo pra ser executada, evitando injeção de sql
-            $sql = "INSERT INTO paciente(nome, sobrenome, cpf, cep, estado, rua, cidade, numero, planoSaude, tipoPessoa, senha) Values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO paciente(nome, sobrenome, cpf, cep, estado, rua, cidade, numero, planoSaude, tipoPessoa, senha, medico_id) Values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             $stmt = $this->conexao->prepare($sql);
             $stmt->bindValue(1, $model->nome);
@@ -25,9 +25,10 @@
             $stmt->bindValue(6, $model->rua);
             $stmt->bindValue(7, $model->cidade);
             $stmt->bindValue(8, $model->numero);
-            $stmt->bindValue(9, $model->planoSaude);
+            $stmt->bindValue(9, $model->PlanoSaude);
             $stmt->bindValue(10, $model->tipoPessoa);
             $stmt->bindValue(11, $model->senha);
+            $stmt->bindValue(12, $model->medico_id);
 
 
             $stmt->execute();
@@ -40,7 +41,7 @@
         {
             
 
-            $sql = "UPDATE paciente SET nome = ?, sobrenome = ?, cpf =?, cep = ?, estado = ?, rua = ?, cidade = ?, numero = ?, planoSaude = ?, tipoPessoa = ?, senha = ? where idPaciente = ? ";
+            $sql = "UPDATE paciente SET nome = ?, sobrenome = ?, cpf =?, cep = ?, estado = ?, rua = ?, cidade = ?, numero = ?, planoSaude = ?, tipoPessoa = ?, senha = ?, medico_id = ? where idPaciente = ? ";
 
             $stmt = $this->conexao->prepare($sql);
             $stmt->bindValue(1, $model->nome);
@@ -51,26 +52,26 @@
             $stmt->bindValue(6, $model->rua);
             $stmt->bindValue(7, $model->cidade);
             $stmt->bindValue(8, $model->numero);
-            $stmt->bindValue(9, $model->planoSaude);
+            $stmt->bindValue(9, $model->PlanoSaude);
             $stmt->bindValue(10, $model->tipoPessoa);
             $stmt->bindValue(11, $model->senha);
-            $stmt->bindValue(12, $model->idPaciente);
+            $stmt->bindValue(12, $model->medico_id);
+            $stmt->bindValue(13, $model->idPaciente);
 
             $stmt->execute();
         }
 
-        public function select()
+        public function select($medico_id)
         {
-            $sql = "SELECT * FROM paciente";
-
+            include_once 'App/Model/PessoaModel.php';
+            $sql = "SELECT * FROM paciente WHERE medico_id = ?";
+        
             $stmt = $this->conexao->prepare($sql);
-
+            $stmt->bindValue(1, $medico_id); // Use o parâmetro $medico_id aqui
+        
             $stmt->execute();
-
-            return $stmt->fetchAll(PDO::FETCH_CLASS);
+            return $stmt->fetchAll(PDO::FETCH_CLASS, 'PessoaModel'); // Use FETCH_CLASS para retornar objetos do tipo PessoaModel
         }
-
-
 
         public function delete(int $idPaciente)
         {

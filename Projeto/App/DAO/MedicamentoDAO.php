@@ -22,7 +22,7 @@ class MedicamentoDAO extends PessoaDAO
         $stmt->execute();
     }
 
-    public function select()
+    public function selectM()
     {
         $sql = "SELECT * FROM medicamentosconsulta;";
 

@@ -31,7 +31,7 @@ class MedicamentoModel
         include 'App/DAO/MedicamentoDAO.php';
         $dao = new MedicamentoDAO();
 
-        $this->rows = $dao->select();
+        $this->rows = $dao->selectM();
 
        }
 }

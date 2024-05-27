@@ -38,7 +38,7 @@
                 <td><?= $item->rua ?></td>
                 <td><?= $item->numero ?></td>
                 <td><?= $item->tipoPessoa ?></td>
-                <td><?= $item->planoSaude ?></td>
+                <td><?= $item->PlanoSaude ?></td>
             </tr>
         <?php endforeach?>
     </table>

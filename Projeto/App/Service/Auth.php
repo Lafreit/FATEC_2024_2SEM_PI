@@ -1,91 +1,64 @@
 <?php
+
 class Auth
 {
     public static function validador()
     {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+        self::startSession();
 
         if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
-            // Se não estiver logado, define a mensagem de erro e redireciona para a página de login
-            $_SESSION['error_message'] = "Por favor, faça login para acessar esta página.";
-            header("Location: /form/login");
-            exit();
+            self::setErrorMessage("Por favor, faça login para acessar esta página.");
+            self::redirect("/form/login");
         }
     }
 
     public static function iniciarSessao($result)
     {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+        self::startSession();
 
         if (!empty($result)) {
-            // Se os dados de login forem encontrados, inicia a sessão
             $_SESSION["logged_in"] = true;
-            $_SESSION["user_id"] = $result['id']; // Armazena o ID do usuário na sessão
-            $_SESSION["user_data"] = $result; // Opcional: Armazena dados adicionais do usuário
+            $_SESSION["user_id"] = $result['id'];
+            $_SESSION["user_data"] = $result;
             return true;
         } else {
-            // Se os dados de login não forem encontrados, define a mensagem de erro e redireciona para o formulário de login
-            $_SESSION['error_message'] = "Usuário ou senha incorretos.";
-            header('Location: /form/login');
-            exit();
+            self::setErrorMessage("Usuário ou senha incorretos.");
+            self::redirect("/form/login");
+            return false;
         }
     }
 
     public static function getLoggedInUserId()
     {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+        self::startSession();
 
-        if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
-            return $_SESSION["user_id"];
-        } else {
-            return null; // Retorna null se nenhum usuário estiver logado
-        }
-    }
-
-    public static function exibirMensagemErro()
-    {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        // Verifica se existe uma mensagem de erro na variável de sessão
-        if (isset($_SESSION['error_message'])) {
-            echo '<div style="color: red;">' . $_SESSION['error_message'] . '</div>';
-
-            // Limpa a variável de sessão para que a mensagem de erro não persista após um novo acesso à página de login
-            unset($_SESSION['error_message']);
-        }
-    }
-
-    public static function exibirMensagemSucesso()
-    {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        if (!empty($_SESSION['success_message'])) {
-            echo '<div>' . $_SESSION['success_message'] . '</div>';
-            unset($_SESSION['success_message']);
-        }
+        return isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true ? $_SESSION["user_id"] : null;
     }
 
     public static function logout()
     {
+        self::startSession();
+        session_destroy();
+        self::redirect("/");
+    }
+
+    private static function setErrorMessage($message)
+    {
+        $_SESSION['error_message'] = $message;
+    }
+
+    private static function redirect($location)
+    {
+        header("Location: $location");
+        exit();
+    }
+
+    private static function startSession()
+    {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-
-        session_destroy();
-
-        // Redireciona o usuário para a página de login
-        header("Location: /");
-        exit();
     }
 }
+
 ?>

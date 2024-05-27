@@ -7,6 +7,7 @@
         public $duracao;
         public $dosagem;
         public $instrucao;
+        public $CRM;
 
         public $id;
 
