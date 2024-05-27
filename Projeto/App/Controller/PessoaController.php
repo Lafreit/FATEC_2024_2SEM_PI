@@ -18,7 +18,7 @@
 
             $model = new PessoaModel();
             $model->getAllRows();
-            include 'App/View/modules/Pessoa/index.php';
+            include 'App/View/modules/Pessoa/listar.php';
             
         }
 
@@ -29,7 +29,7 @@
         }
         public static function HomeMedico()
         {
-            include 'App/view/modules/Pessoa/medico.php';
+            include 'App/view/modules/Pessoa/funcionario.php';
         }
 
 
