@@ -22,7 +22,7 @@
                 $model->dosagem = $_POST['dosagem'];
                 $model->instrucao = $_POST['instrucao'];
                 $model->CRM = $_POST['CRM'];
-         
+                
 
     
 
