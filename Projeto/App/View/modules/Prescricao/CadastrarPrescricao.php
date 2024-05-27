@@ -41,6 +41,11 @@
                 <input type="text" id="instrucao" name="instrucao" required>
             </div>
 
+            <div class="form-group">
+                <label for="CRM">CRM</label>
+                <input type="text" id="CRM" name="CRM" required>
+            </div>
+
 
 
             <div class="btn-container">
