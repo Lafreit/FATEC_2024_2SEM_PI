@@ -1,3 +1,15 @@
+<?php
+
+if (strpos($_SERVER['PHP_SELF'], basename(__FILE__)) !== false) {
+
+    header("Location: /");
+    exit();
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

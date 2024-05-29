@@ -1,7 +1,11 @@
 <?php
- 
- 
- ?>
+
+if (strpos($_SERVER['PHP_SELF'], basename(__FILE__)) !== false) {
+    // Redireciona para a página inicial
+    header("Location: /");
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">

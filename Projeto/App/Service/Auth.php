@@ -57,7 +57,7 @@ class Auth
     }
 
     // Valida se o usuário está logado, caso contrário, redireciona para a página de login
-    private static function validador()
+    public static function validador()
     {
         if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
             self::setErrorMessage("Por favor, faça login para acessar esta página.");
@@ -85,6 +85,19 @@ class Auth
             session_start();
         }
     }
+
+
+
+    public static function checkURL() {
+    // Verifica se a URL acessada contém o nome do arquivo PHP atual
+    if (strpos($_SERVER['PHP_SELF'], basename(__FILE__)) !== false) {
+        // Redireciona para a página inicial
+        header("Location: /");
+        exit();
+    }
+
+}
+
 }
 
 ?>

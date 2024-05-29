@@ -1,12 +1,17 @@
 <?php
 
+
 include 'App/Controller/PessoaController.php'; 
 include 'App/Controller/MedicamentoController.php';
 include 'App/Controller/PrescricaoController.php';
 include 'App/Controller/LoginController.php';
 include_once 'App/Service/Auth.php';
 
+
+
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+
 
 switch ($url) {
     // Rotas de Login
