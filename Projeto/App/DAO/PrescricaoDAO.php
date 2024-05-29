@@ -23,7 +23,7 @@
                 $stmt->execute();
         
 
-                header("Location: /prescricao/form");
+                header("Location: /telaM");
                 exit();
             } catch(PDOException $e)
             {

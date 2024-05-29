@@ -100,16 +100,18 @@
         }
 
 
-        /*
-        public function insertDescription()
+
+        public function insertDescription(PessoaModel $model)
         {
-            $sql = "INSERT INTO efeitoscolaterais(descricao, pacienteID) Values(?, ?)";
+            include_once 'App/Model/PessoaModel.php';
+            $sql = "INSERT INTO efeitoscolaterais(descricao, id_paciente) Values(?, ?)";
             $stmt = $this->conexao->prepare($sql);
             $stmt->bindValue(1, $model->descricao);
-            $stmt->bindValue(2, $model->$idPaciente);
+            $stmt->bindValue(2, $model->idPaciente);
+         
 
             $stmt->execute();
         }
-        */
+
     }
 ?>

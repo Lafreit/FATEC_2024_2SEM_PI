@@ -32,6 +32,7 @@ class MedicamentoModel
         $dao = new MedicamentoDAO();
 
         $this->rows = $dao->selectM();
+   
 
        }
 }

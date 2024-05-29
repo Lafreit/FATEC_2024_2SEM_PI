@@ -52,27 +52,56 @@
         <?php
         // Verifica se há resultados para exibir
         if (!empty($model->result)) {
-            // Inicializa uma variável para armazenar temporariamente o último nome de paciente
+            // Inicializa variáveis para armazenar temporariamente os últimos valores exibidos
             $ultimo_nome = '';
+            $ultima_descricao = '';
+            $ultimo_NumCRM = '';
+            $ultimo_medicamento = '';
         
             foreach ($model->result as $linha) {
-                // Verifica se o nome do paciente é diferente do último nome exibido
-                if ($linha->nome != $ultimo_nome) {
-                    echo '<tr>';
-                    echo '<td>' . $linha->idPaciente . '</td>';
-                    echo '<td><a href="/pessoa/form?id=' . $linha->idPaciente . '">' . $linha->nome . '</a></td>';
-                    $ultimo_nome = $linha->nome; // Atualiza o último nome exibido
-                } else {
-                    // Se for o mesmo nome do paciente, exibe células vazias para o ID e o nome
-                    echo '<tr><td></td><td></td>'; // Abre uma nova linha apenas para ID e nome
+                // Verifica se qualquer um dos campos é diferente do último valor exibido
+                $mostrar_nova_linha = false;
+                if ($linha->nome != $ultimo_nome || $linha->descricao != $ultima_descricao || $linha->NumCRM != $ultimo_NumCRM || $linha->Medicamento != $ultimo_medicamento) {
+                    $mostrar_nova_linha = true;
                 }
-                // Exibe as informações do paciente
-                echo "<td>{$linha->Medicamento}</td>";
-                echo "<td>{$linha->tipo}</td>";
-                echo "<td>{$linha->descricao}</td>";
-                echo "<td>{$linha->data_prescricao}</td>";
-                echo "<td>{$linha->dosagem}</td>";
-                echo '</tr>';
+        
+                if ($mostrar_nova_linha) {
+                    echo '<tr>';
+                    // Exibe o nome do paciente se for diferente do último nome exibido
+                    if ($linha->nome != $ultimo_nome) {
+                        echo '<td>' . $linha->idPaciente . '</td>';
+                        echo '<td><a href="/pessoa/form?id=' . $linha->idPaciente . '">' . $linha->nome . '</a></td>';
+                        $ultimo_nome = $linha->nome; // Atualiza o último nome exibido
+                    } else {
+                        echo '<td></td><td></td>';
+                    }
+        
+                    // Exibe o medicamento se for diferente do último medicamento exibido
+                    if ($linha->Medicamento != $ultimo_medicamento) {
+                        echo "<td>{$linha->Medicamento}</td>";
+                        $ultimo_medicamento = $linha->Medicamento; // Atualiza o último medicamento exibido
+                    } else {
+                        echo '<td></td>';
+                    }
+        
+                    // Exibe a descrição se for diferente da última descrição exibida
+                    if ($linha->descricao != $ultima_descricao) {
+                        echo "<td>{$linha->descricao}</td>";
+                        $ultima_descricao = $linha->descricao; // Atualiza a última descrição exibida
+                    } else {
+                        echo '<td></td>';
+                    }
+        
+                    // Exibe o NumCRM se for diferente do último NumCRM exibido
+                    if ($linha->NumCRM != $ultimo_NumCRM) {
+                        echo "<td>{$linha->NumCRM}</td>";
+                        $ultimo_NumCRM = $linha->NumCRM; // Atualiza o último NumCRM exibido
+                    } else {
+                        echo '<td></td>';
+                    }
+        
+                    echo '</tr>';
+                }
             }
         } else {
             // Se não houver resultados, exibe uma mensagem de que nenhum medicamento foi encontrado

@@ -3,8 +3,11 @@
     class PessoaModel
     {
        public $idPaciente, $nome, $sobrenome, $cpf, $cep, $estado, $cidade, $rua, $numero, $PlanoSaude, $tipoPessoa, $senha;
+       public $descricao;
 
        public $medico_id;
+
+       
 
 
 
@@ -82,15 +85,16 @@
         }
 
 
-        /*
+  
         public function saveDescription()
         {
             include 'App/DAO/PessoaDAO.php';
             $dao = new PessoaDAO();
-            $obj = $dao->insertDescription($this->descricao);
+            $dao->insertDescription($this);
+
+
         }
-        */
-    
+
     }
       
     

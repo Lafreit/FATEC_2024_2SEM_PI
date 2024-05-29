@@ -35,7 +35,7 @@
                 <a class="nav-link" id="relatorio-tab" data-toggle="tab" href="#relatorio" role="tab" aria-controls="relatorio" aria-selected="false">Relatório Completo</a>
             </li>
             <li>
-                <a class="btn" id="relatorio-tab" href="/logout" >Logout</a>
+                <a class="btn" id="logout-tab" href="/logout">Logout</a>
             </li>
         </ul>
 
@@ -43,264 +43,182 @@
         <div class="tab-content" id="myTabContent">
             <!-- Conteúdo da aba de Medicamento -->
             <div class="tab-pane fade show active" id="medicamento" role="tabpanel" aria-labelledby="medicamento-tab">
-                
                 <!-- Adicione o conteúdo aqui -->
-                <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="img/log1.png" type="image/x-icons">
-<title>Medicamentos</title>
-<header>
-    <div class="logo">
-    <h2 class="logo-nome"></h2>
-    </div>
-</header>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<style>
-    .search-box {
-        position: relative;
-        max-width: 250px; /* Defina a largura máxima desejada */
-    }
-
-    .search-box input[type="text"] {
-        padding-right: 30px; /* Ajuste o padding para acomodar o ícone da lupa */
-    }
-
-    .search-box i {
-        position: absolute;
-        right: 10px; /* Ajuste a posição direita conforme necessário */
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-    }
-</style>
-<script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
-</script>
-</head>
-<body>
-<div class="container-xl">
-    <div class="table-responsive">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-8"><h2> <b></b></h2></div>
-                    <div class="col-sm-4">
-                        <div class="search-box">
-                            <i class="material-icons">&#xE8B6;</i>
-                            <input type="text" class="form-control" placeholder="Buscar&hellip;">
+                <div class="container-xl">
+                    <div class="table-responsive">
+                        <div class="table-wrapper">
+                            <div class="table-title">
+                                <div class="row">
+                                    <div class="col-sm-8"><h2><b></b></h2></div>
+                                    <div class="col-sm-4">
+                                        <div class="search-box">
+                                            <i class="material-icons">&#xE8B6;</i>
+                                            <input type="text" class="form-control" placeholder="Buscar&hellip;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table table-striped table-hover table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Nome <i class="fa fa-sort"></i></th>
+                                        <th>Concentração</th>
+                                        <th>Fórmula Farmacêutica <i class="fa fa-sort"></i></th>
+                                        <th>Esquema de tratamento</th>
+                                        <th>Imprimir</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0001</td>
+                                        <td>Amoxicilina</td>
+                                        <td>500 mg</td>
+                                        <td>TAB</td>
+                                        <td>60 Comprimidos</td>
+                                        <td>
+                                            <a href="#" class="view" title="Ver" data-toggle="tooltip">
+                                                <button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
+                                            </a>
+                                            <script>
+                                                function imprimirPagina() {
+                                                    window.print();
+                                                }
+                                            </script>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>0002</td>
+                                        <td>Cefalexina</td>
+                                        <td>250 mg</td>
+                                        <td>Líquido Oral</td>
+                                        <td>1 Frasco</td>
+                                        <td>
+                                            <a href="#" class="view" title="Ver" data-toggle="tooltip">
+                                                <button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
+                                            </a>
+                                            <script>
+                                                function imprimirPagina() {
+                                                    window.print();
+                                                }
+                                            </script>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>0003</td>
+                                        <td>Loratadina</td>
+                                        <td>10 mg</td>
+                                        <td>TAB</td>
+                                        <td>5 Comprimidos</td>
+                                        <td>
+                                            <a href="#" class="view" title="Ver" data-toggle="tooltip">
+                                                <button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
+                                            </a>
+                                            <script>
+                                                function imprimirPagina() {
+                                                    window.print();
+                                                }
+                                            </script>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>0004</td>
+                                        <td>Omeprazol</td>
+                                        <td>20 mg</td>
+                                        <td>TAB</td>
+                                        <td>30 Comprimidos</td>
+                                        <td>
+                                            <a href="#" class="view" title="Ver" data-toggle="tooltip">
+                                                <button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
+                                            </a>
+                                            <script>
+                                                function imprimirPagina() {
+                                                    window.print();
+                                                }
+                                            </script>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>0005</td>
+                                        <td>Paracetamol</td>
+                                        <td>500 mg</td>
+                                        <td>TAB</td>
+                                        <td>28 Comprimidos</td>
+                                        <td>
+                                            <a href="#" class="view" title="Ver" data-toggle="tooltip">
+                                                <button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
+                                            </a>
+                                            <script>
+                                                function imprimirPagina() {
+                                                    window.print();
+                                                }
+                                            </script>
+                                        </td>
+                                    </tr>        
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Nome <i class="fa fa-sort"></i></th>
-                        <th>Concentração</th>
-                        <th>Fórmula Farmacêutica <i class="fa fa-sort"></i></th>
-                        <th>Esquema de tratamento</th>
-                        <th>Imprimir</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>0001</td>
-                        <td>Amoxicilina</td>
-                        <td>500 mg</td>
-                        <td>TAB</td>
-                        <td>60 Comprimidos</td>
-                        <td>
-                            <a href="#" class="view" title="Ver" data-toggle="tooltip"><button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
-                            <script>
-                                function imprimirPagina() {
-                                    window.print();
-                                }
-                            </script>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0002</td>
-                        <td>Cefalexina</td>
-                        <td>250 mg</td>
-                        <td>Líquido Oral</td>
-                        <td>1 Frasco</td>
-                        <td>
-                            <a href="#" class="view" title="Ver" data-toggle="tooltip"><button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
-                                <script>
-                                    function imprimirPagina() {
-                                        window.print();
-                                    }
-                                </script>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0003</td>
-                        <td>Loratadina</td>
-                        <td>10 mg</td>
-                        <td>TAB</td>
-                        <td>5 Comprimidos</td>
-                        <td>
-                            <a href="#" class="view" title="Ver" data-toggle="tooltip"><button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
-                                <script>
-                                    function imprimirPagina() {
-                                        window.print();
-                                    }
-                                </script>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0004</td>
-                        <td>Omeprazol</td>
-                        <td>20 mg</td>
-                        <td>TAB</td>
-                        <td>30 Comprimidos</td>
-                        <td>
-                            <a href="#" class="view" title="Ver" data-toggle="tooltip"><button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
-                                <script>
-                                    function imprimirPagina() {
-                                        window.print();
-                                    }
-                                </script>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0005</td>
-                        <td>Paracetamol</td>
-                        <td>500 mg</td>
-                        <td>TAB</td>
-                        <td>28 Comprimidos</td>
-                        <td>
-                            <a href="#" class="view" title="Ver" data-toggle="tooltip"><button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
-                                <script>
-                                    function imprimirPagina() {
-                                        window.print();
-                                    }
-                                </script>
-                        </td>
-                    </tr>        
-                </tbody>
-            </table>
-        </div>
-    </div>  
-</div>   
-</body>
-</html>
+                    </div>  
+                </div>  
             </div>
 
             <!-- Conteúdo da aba de Alarme -->
             <div class="tab-pane fade" id="alarme" role="tabpanel" aria-labelledby="alarme-tab">
-                
                 <!-- Adicione o conteúdo aqui -->
-                <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Alarme</title>
-    <link rel="stylesheet" href="../css/opcphorario.css">
-</head>
-<body>
-    <div class="container">
-        
-        <form id="alarmForm">
-            <div class="form-group">
-                <label for="medicineName">Nome do Medicamento:</label>
-                <input type="text" id="medicineName" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="alarmTime">Horário do Alarme:</label>
-                <input type="time" id="alarmTime" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Adicionar Alarme</button>
-        </form>
-        <div id="alarmList">
-            <!-- Aqui serão listados os alarmes adicionados -->
-        </div>
-    </div>
-    <script src="../js/scripts.js"></script>
-</body>
-</html>
+                <div class="container">
+                    <form id="alarmForm" class="success-alert">
+                        <div class="form-group">
+                            <label for="medicineName">Nome do Medicamento:</label>
+                            <input type="text" id="medicineName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="alarmTime">Horário do Alarme:</label>
+                            <input type="time" id="alarmTime" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Adicionar Alarme</button>
+                    </form>
+                    <div id="alarmList">
+                        <!-- Aqui serão listados os alarmes adicionados -->
+                    </div>
+                </div>
             </div>
 
             <!-- Conteúdo da aba de Sintomas -->
             <div class="tab-pane fade" id="sintomas" role="tabpanel" aria-labelledby="sintomas-tab">
-                
                 <!-- Adicione o conteúdo aqui -->
-                <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/log1.png" type="image/x-icons">
-    <title>Registre seus Sintomas</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/sintomas.css"> <!-- Adicione o link para o seu arquivo CSS -->
-</head>
-<body>
-    <header>
-        
-    </header>
-
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                Adicionar Sintoma
-            </div>
-            <div class="card-body">
-                <form id="addSymptomForm">
-                    <div class="form-group">
-                        <label for="symptom">Sintoma / Efeito Colateral:</label>
-                        <input type="text" class="form-control" id="symptom" placeholder="Digite o sintoma ou efeito colateral" required>
+                <div class="container">
+                    <div class="card">
+                        <div class="card-header">
+                            Adicionar Sintoma
+                        </div>
+                        <div class="card-body">
+                            <form id="addSymptomForm" action="/paciente" method="post" class="success-alert">
+                                <div class="form-group">
+                                    <label for="symptom">Sintoma / Efeito Colateral:</label>
+                                    <input type="text" class="form-control" id="symptom" placeholder="Digite o sintoma ou efeito colateral" name="descricao" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Adicionar Sintoma</button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="severity">Gravidade:</label>
-                        <select class="form-control" id="severity">
-                            <option value="Leve">Leve</option>
-                            <option value="Moderada">Moderada</option>
-                            <option value="Grave">Grave</option>
-                        </select>
+
+                    <div class="mt-4">
+                        <table id="symptomsTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Sintoma / Efeito Colateral</th>
+                                    <th>Gravidade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Aqui serão adicionados dinamicamente os sintomas -->
+                            </tbody>
+                        </table>
                     </div>
-                    <button type="submit" class="btn btn-primary">Adicionar Sintoma</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="mt-4">
-            <table id="symptomsTable" class="table">
-                <thead>
-                    <tr>
-                        <th>Sintoma / Efeito Colateral</th>
-                        <th>Gravidade</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Aqui serão adicionados dinamicamente os sintomas -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="sintomas.js"></script> <!-- Adicione o link para o seu arquivo JavaScript -->
-</body>
-</html>
-
+                </div>
             </div>
 
             <!-- Conteúdo da aba de Relatório Completo -->
-            
             <div class="tab-pane fade" id="relatorio" role="tabpanel" aria-labelledby="relatorio-tab">
                 <div class="container">
                     <header>
@@ -337,11 +255,21 @@ $(document).ready(function(){
                     </section>
                 </div>
             </div>
-            </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll("form.success-alert").forEach(function(form) {
+                form.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    alert("Enviado com sucesso");
+                    form.submit();
+                });
+            });
+        });
+    </script>
 </body>
 </html>
