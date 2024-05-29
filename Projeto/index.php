@@ -1,5 +1,4 @@
 <?php
-// routes.php
 
 include 'App/Controller/PessoaController.php'; 
 include 'App/Controller/MedicamentoController.php';
@@ -24,25 +23,20 @@ switch ($url) {
         break;
 
     // Rotas protegidas - CadastroPaciente
-    case '/pessoa':
-        Auth::validador();
-        PessoaController::index();
-        break;
 
     case '/pessoa/form':
-        Auth::validador();
+
+        Auth::verificarTipoUsuario('Medico');
+  
         PessoaController::form();
         break;
 
     case '/pessoa/form/save':
-        Auth::validador();
+
+        Auth::verificarTipoUsuario('Medico');
+
         PessoaController::save();
         break;
-
-    // case '/pessoa/delete':
-    //     Auth::validador();
-    //     PessoaController::delete();
-    //     break;
 
     // Telas
     case '/':
@@ -50,49 +44,64 @@ switch ($url) {
         break;
 
     case '/telaP':
-        Auth::validador();
+
+        Auth::verificarTipoUsuario('Pessoa');
+ 
         PessoaController::HomePaciente();
         break;
 
+        case '/paciente':
+
+            Auth::verificarTipoUsuario('Pessoa');
+     
+            PessoaController::saveDescription();
+            break;
+    
+
     case '/telaM':
-        Auth::validador();
+
+        Auth::verificarTipoUsuario('Medico');
+
         PessoaController::HomeMedico();
         break;
 
-    // Rotas protegidas - Medicamento
-    case '/medicamento':
-        Auth::validador();
-        MedicamentoController::index();
-        break;
-
     case '/medicamento/formConsulta':
-        Auth::validador();
+
+        Auth::verificarTipoUsuario('Medico');
+      
         MedicamentoController::formConsulta();
         break;
 
     case '/medicamento/Consultar':
-        Auth::validador();
+
+        Auth::verificarTipoUsuario('Medico');
+      
         MedicamentoController::Consulta();
         break;
 
     case '/medicamento/form':
-        Auth::validador();
+
+        Auth::verificarTipoUsuario('Medico');
+    
         MedicamentoController::form();
         break;
 
     case '/medicamento/form/save':
-        Auth::validador();
+   
+        Auth::verificarTipoUsuario('Medico');
         MedicamentoController::save();
         break;
 
     // Rotas protegidas - Prescrição
     case '/prescricao/form':
-        Auth::validador();
+       
+        Auth::verificarTipoUsuario('Medico');
         PrescricaoController::form();
         break;
 
     case '/prescricao/form/save':
-        Auth::validador();
+      
+        Auth::verificarTipoUsuario('Medico');
         PrescricaoController::save();
         break;
 

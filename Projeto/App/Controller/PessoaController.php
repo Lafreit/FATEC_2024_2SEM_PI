@@ -11,16 +11,6 @@
            include 'App/View/modules/Pessoa/index.php';
         }
         
-        
-        public static function index()
-        {
-            include 'App/Model/PessoaModel.php';
-            $medico_id = Auth::getLoggedInUserId();
-            $model = new PessoaModel();
-            $model->getAllRows($medico_id);
-            include 'App/View/modules/Pessoa/listar.php';
-            
-        }
 
         
         public static function HomePaciente()
@@ -29,7 +19,16 @@
         }
         public static function HomeMedico()
         {
-            include 'App/view/modules/Pessoa/funcionario.php';
+            include_once 'App/Model/MedicamentoModel.php';
+            include_once 'App/Model/PessoaModel.php';
+            $medico_id = Auth::getLoggedInUserId();
+            $model = new PessoaModel();
+            $model->getAllRows($medico_id);
+
+            
+            $modelM = new MedicamentoModel();
+            $modelM->getAllRows();
+            include 'App/view/modules/Pessoa/HomeMedico.php';
         }
 
 
@@ -82,7 +81,7 @@
             $model->save();
 
 
-            header("Location: /pessoa");
+            header("Location: /telaM");
         }
 
 
@@ -92,25 +91,28 @@
             $model = new PessoaModel();
             $model->delete((int) $_GET['id']);
 
-            header("location: /pessoa");
+            header("location: /telaM");
         }
 
 
 
 
 
-      /* public static function saveDescription()
+      public static function saveDescription()
         {
             include 'App/Model/PessoaModel.php';
             $model = new PessoaModel();
-            $model->nome = $_POST['descricao'];
+            $model->descricao = $_POST['descricao'];
+            $model->idPaciente = Auth::getLoggedInUserId();
+            $model->saveDescription();
 
+         
 
-            header("Location: /paciente");
+            header("Location: /telaP");
             
          
            
         }
-        */
+
     }
 ?>

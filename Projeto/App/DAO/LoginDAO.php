@@ -18,10 +18,13 @@ class LoginDAO extends PessoaDAO
     
         if ($tipo == 'Pessoa') {
             $sql = "SELECT p.idPaciente as id, p.nome, p.cpf, p.senha FROM paciente p WHERE p.cpf = ? AND p.senha = ?";
+            $_SESSION["tipo_usuario"] = 'Pessoa';
             $redirect = "/telaP";
         } elseif ($tipo == 'Medico') {
             $sql = "SELECT m.id as id, m.nome, m.cpf, m.senha FROM medico m WHERE m.cpf = ? AND m.senha = ?";
+            $_SESSION["tipo_usuario"] = 'Medico';
             $redirect = "/telaM";
+            
         } 
     
         $stmt = $this->conexao->prepare($sql);
@@ -30,10 +33,12 @@ class LoginDAO extends PessoaDAO
         $stmt->execute();
         $this->result = $stmt->fetch(PDO::FETCH_ASSOC);
     
-        // Chama o método de verificação de sessão após a execução da consulta
-        Auth::iniciarSessao($this->result);
-    
-        header("location: $redirect");
+        if(Auth::iniciarSessao($this->result, $tipo)) {
+            header("location: $redirect");
+        } else {
+        
+            header("location: /form/login");
+        }
     }
 
 

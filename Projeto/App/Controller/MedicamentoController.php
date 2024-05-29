@@ -3,17 +3,6 @@ class MedicamentoController{
 
 
 
-public static function index()
-{
-    include 'App/Model/MedicamentoModel.php';
-
-    $model = new MedicamentoModel();
-    $model->getAllRows();
-    include 'App/View/modules/Medicação/ListaMedicamento.php';
-}
-
-
-
 
 public static function form()
 {
@@ -35,7 +24,7 @@ public static function save()
 
     $model->save();
 
-    header("Location: /medicamento");
+    header("Location: /telaM");
 
    
 }

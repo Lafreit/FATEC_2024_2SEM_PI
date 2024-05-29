@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,7 +24,7 @@
         <!-- Abas ou seções do dashboard -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="pacientes-tab" data-toggle="tab" href="#pacientes" role="tab" aria-controls="pacientes" aria-selected="true">Pacientes</a>
+                <a class="nav-link active" id="pacientes-tab" data-toggle="tab" href="#pacientes" role="tab" aria-controls="pacientes" aria-selected="true">Registros Pacientes</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="medicamentos-tab" data-toggle="tab" href="#medicamentos" role="tab" aria-controls="medicamentos" aria-selected="false">Medicamentos</a>
@@ -31,6 +32,15 @@
             <li class="nav-item">
                 <a class="nav-link" id="receita-tab" data-toggle="tab" href="#receita" role="tab" aria-controls="receita" aria-selected="false">Receita Médica</a>
             </li>
+            <li class="nav-item">
+                <a href="/medicamento/formConsulta" class="nav-link" id="receita-tab" aria-controls="receita" aria-selected="false">Consultar Prescrição</a>
+            </li>
+            <li class="nav-item">
+                <a href="/logout" class="nav-link" id="receita-tab" aria-controls="receita" aria-selected="false">Logout</a>
+            </li>
+
+
+
         </ul>
 
         <div class="tab-content" id="myTabContent">
@@ -71,51 +81,45 @@
                         <div class="col-sm-6">
                             <h2><b></b></h2>
                         </div>
-                        <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar Novo Paciente</span></a>
-                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Excluir</span></a>						
-                        </div>
+                       
                     </div>
                 </div>
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="selectAll">
-                                    <label for="selectAll"></label>
-                                </span>
-                            </th>
-                            <th>Nome Completo</th>
-                            <th>Idade</th>
-                            <th>Gênero</th>
+                            <th>Nome</th>
+                            <th>Sobrenome</th>
                             <th>CPF</th>
-                            <th>Endereço</th>
-                            <th>Telefone</th>
-                            <th>E-mail</th>
-                            <th>Ações</th>
+                            <th>CEP</th>
+                            <th>Estado</th>
+                            <th>Cidade</th>
+                            <th>Rua</th>
+                            <th>Número</th>
+                            <th>Tipo</th>
+                            <th>Plano</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                    <label for="checkbox1"></label>
-                                </span>
-                            </td>
-                            <td>Bruno</td>
-                            <td>36</td>
-                            <td>M</td>
-                            <td>0953678145</td>
-                            <td>Fatec-Araras </td>
-                            <td>(019) 998-2222</td>
-                            <td>bruno@fatecararas.com</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Excluir">&#xE872;</i></a>
-                            </td>
+                            <?php foreach($model->rows as $item): ?>
+                            <tr>
+                                <td><a href="/pessoa/form?id=<?= $item->idPaciente ?>"> <?= $item->nome ?></td>
+                                <td><?= $item->sobrenome ?></td>
+                                <td><?= $item->cpf ?></td>
+                                <td><?= $item->cep ?></td>
+                                <td><?= $item->estado ?></td>
+                                <td><?= $item->cidade ?></td>
+                                <td><?= $item->rua ?></td>
+                                <td><?= $item->numero ?></td>
+                                <td><?= $item->tipoPessoa ?></td>
+                                <td><?= $item->PlanoSaude ?></td>
+                        <?php endforeach ?>
                         </tr>
+                        <table>
+        <tr>
+            <th></th>
+          
+        </tr>
+    </table>
                         <!-- Aqui vão os outros registros -->
                     </tbody>
                 </table>
@@ -199,89 +203,30 @@ $(document).ready(function(){
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th>Código</th>
-                        <th>Nome <i class="fa fa-sort"></i></th>
-                        <th>Concentração</th>
-                        <th>Fórmula Farmacêutica <i class="fa fa-sort"></i></th>
-                        <th>Esquema de tratamento</th>
-                        <th>Imprimir</th>
+                  
+                        <th>Nome Medicamento</th>
+                        <th>Fabricante</th>
+                        <th>Tipo</th>
+                        <th>Uso</th>
+      
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>0001</td>
-                        <td>Amoxicilina</td>
-                        <td>500 mg</td>
-                        <td>TAB</td>
-                        <td>60 Comprimidos</td>
-                        <td>
-                            <a href="#" class="view" title="Ver" data-toggle="tooltip"><button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
-                            <script>
-                                function imprimirPagina() {
-                                    window.print();
-                                }
-                            </script>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0002</td>
-                        <td>Cefalexina</td>
-                        <td>250 mg</td>
-                        <td>Líquido Oral</td>
-                        <td>1 Frasco</td>
-                        <td>
-                            <a href="#" class="view" title="Ver" data-toggle="tooltip"><button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
-                                <script>
-                                    function imprimirPagina() {
-                                        window.print();
-                                    }
-                                </script>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0003</td>
-                        <td>Loratadina</td>
-                        <td>10 mg</td>
-                        <td>TAB</td>
-                        <td>5 Comprimidos</td>
-                        <td>
-                            <a href="#" class="view" title="Ver" data-toggle="tooltip"><button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
-                                <script>
-                                    function imprimirPagina() {
-                                        window.print();
-                                    }
-                                </script>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0004</td>
-                        <td>Omeprazol</td>
-                        <td>20 mg</td>
-                        <td>TAB</td>
-                        <td>30 Comprimidos</td>
-                        <td>
-                            <a href="#" class="view" title="Ver" data-toggle="tooltip"><button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
-                                <script>
-                                    function imprimirPagina() {
-                                        window.print();
-                                    }
-                                </script>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0005</td>
-                        <td>Paracetamol</td>
-                        <td>500 mg</td>
-                        <td>TAB</td>
-                        <td>28 Comprimidos</td>
-                        <td>
-                            <a href="#" class="view" title="Ver" data-toggle="tooltip"><button onclick="imprimirPagina();"><i class='fa fa-print'></i></button>
-                                <script>
-                                    function imprimirPagina() {
-                                        window.print();
-                                    }
-                                </script>
-                        </td>
+                <?php
+                    if(isset($modelM) && $modelM !== null && property_exists($modelM, 'rows') && is_array($modelM->rows)) {
+                        foreach($modelM->rows as $item): ?>
+                            <tr>
+                                <td><?= $item->nomeMedicamento ?></td>
+                                <td><?= $item->fabricante ?></td>
+                                <td><?= $item->tipo ?></td>
+                                <td><?= $item->uso ?></td>
+                            </tr>
+                        <?php endforeach;
+                        } else {
+                            echo 'Nenhum medicamento cadastrado';
+                        }
+                        ?>
+                
                     </tr>        
                 </tbody>
             </table>
@@ -317,38 +262,38 @@ $(document).ready(function(){
             <td>
                 <!-- Formulário de receita médica -->
                 <div class="col-sm-6">
-                    <h2>Receita Médica</h2>
+                    <h2>Prescrição Médica</h2>
                 </div>
-                <form autocomplete="off" onsubmit="onFormSubmit()">
+                <form action="/prescricao/form/save" method="post" onsubmit="onFormSubmit()">
                     <!-- Campo para inserir o nome do paciente -->
                     <div>
-                        <label for="productCode">Nome do paciente</label>
-                        <input type="text" name="productCode" id="productCode">
+                        <label for="product">CPF</label>
+                        <input type="varchar" id="cpf" name="cpf" required>
                     </div>
                     <!-- Campo para inserir o medicamento -->
                     <div>
-                        <label for="product">Medicamento</label>
-                        <input type="text" name="product" id="product">
+                        <label for="product">Código Medicamento</label>
+                        <input type="number" id="id_medicamentosconsulta" name="id_medicamentosconsulta" required>
                     </div>
                     <!-- Campo para inserir a quantidade do medicamento -->
                     <div>
-                        <label for="qty">Quantidade</label>
-                        <input type="number" name="qty" id="qty">
+                        <label for="qty">Duração(dias)</label>
+                        <input type="number" id="duracao" name="duracao" required>
                     </div>
                     <!-- Campo para inserir as indicações -->
                     <div>
-                        <label for="product1">Indicações</label>
-                        <input type="text" name="product1" id="product1">
+                        <label for="product">Dosagem</label>
+                        <input type="dosagem" id="dosagem" name="dosagem" required>
                     </div>
                     <!-- Campo para inserir a duração do tratamento -->
                     <div>
-                        <label for="product1">Duração do tratamento</label>
-                        <input type="text" name="product2" id="product2">
+                        <label for="product1">Instrução</label>
+                        <input type="text" id="instrucao" name="instrucao" required>
                     </div>
                     <!-- Campo para inserir o médico prescritor -->
                     <div>
-                        <label for="product1">Médico prescritor</label>
-                        <input type="text" name="product3" id="product3">
+                        <label for="product">CRM</label>
+                        <input type="text" id="CRM" name="CRM" required>
                     </div>
 
                     <!-- Botões de ação do formulário -->
@@ -358,24 +303,9 @@ $(document).ready(function(){
                     </div>
                 </form>
             </td>
-            <!-- Tabela de lista de receitas -->
-            <td>
-                <table class="list" id="storeList">
-                    <!-- Cabeçalho da tabela de lista de receitas -->
-                    <thead>
-                        <tr>
-                            <th>Nomes do paciente</th>
-                            <th>Medicamento</th>
-                            <th>Quantidade</th>
-                            <th>Indicações</th>
-                            <th>Duração do tratamento</th>
-                            <th>Médico prescritor</th>
-                        </tr>
-                    </thead>
+           
                     <!-- Corpo da tabela de lista de receitas (a ser preenchido dinamicamente) -->
-                    <tbody>
-
-                    </tbody>
+                  
                 </table>
             </td>
         </tr>
@@ -394,5 +324,10 @@ $(document).ready(function(){
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <!-- Adicione outros scripts JavaScript aqui -->
+
+
+    
 </body>
+
 </html>
+
