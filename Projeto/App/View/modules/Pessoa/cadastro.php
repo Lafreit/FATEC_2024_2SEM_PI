@@ -1,5 +1,12 @@
 <?php
 
+if (strpos($_SERVER['PHP_SELF'], basename(__FILE__)) !== false) {
+    // Redireciona para a página inicial
+    header("Location: /");
+    exit();
+}
+
+
 //Caminho onde as imagens serão armazenadas
 $uploadDir = "C:/xampp/htdocs/testeimg/";
 

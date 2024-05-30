@@ -17,20 +17,20 @@
         <div class="titulo">
             <p>Login</p>
         </div>
-        <form id="loginform" action='/login' method='post'>
-            <input type="text" name="cpf" placeholder="CPF" required>
-            <input type="password" placeholder="Senha" name="senha" required>
+        <form id="loginform" action = "/login" method = "post">
+            <input type="text" id="cpf" name="cpf" placeholder="CPF" required>
+            <input type="password" id="senha" name="senha" placeholder="Senha" required>
             <div>
                 <label>Pessoa</label>
-                <input type="radio" id='Pessoa' value='Pessoa' name="tipo" required>
+                <input type="radio" id="Pessoa" value="Pessoa" name="tipo" required>
                 <label>Médico</label>
-                <input type="radio" id='Medico' value='Medico' name="tipo" required>
+                <input type="radio" id="Medico" value="Medico" name="tipo" required>
             </div>
             <button type="submit">Iniciar sessão</button>
             <button type="button" onclick="window.location.href='/'">Voltar</button>
         </form>
     </div>
+
+
 </body>
 </html>
-
-
